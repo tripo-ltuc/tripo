@@ -14,9 +14,14 @@ function LoginButton() {
 
   return !isAuthenticated && (
     <>
-    <h1 className="text-center txtLongin">Hello</h1>
-    <Button className="text-center btnLogin" onClick={loginWithRedirect} variant="secondary" size="lg">Log in</Button>
-    
+    <section className="bg-image">
+      <h1 className="text-center txtLongin">Welcome to <span>TRIPO !</span> </h1>
+    <div
+        style={{ display:"flex",justifyContent: "center",alignItems: "center"}}
+      >
+    <Button className="text-center btnLogin" onClick={loginWithRedirect} variant="success" size="lg">LOG IN</Button>
+    </div>
+    </section>
     </>
 
   );

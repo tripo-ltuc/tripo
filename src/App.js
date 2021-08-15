@@ -7,7 +7,8 @@ import Profile from "./components/Profile";
 import Footer from "./components/Footer";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import PostCards from "./PostCards";
+import AboutUs from "./components/pages/AboutUs";
+import Reviews from "./components/pages/Reviews";
 
 class App extends React.Component {
   render() {
@@ -15,7 +16,7 @@ class App extends React.Component {
       <>
         <section>
           <Router>
-            <Header />
+            {/* <Header /> */}
             <Switch>
               <Route exact path="/">
                 {this.props.auth0.isAuthenticated && <Home />}
@@ -24,13 +25,17 @@ class App extends React.Component {
               <Route exact path="/profile">
                 {this.props.auth0.isAuthenticated && <Profile />}
               </Route>
-              <Route exact path="/postCards">
-                <PostCards />
+              <Route exact path="/postCards"></Route>
+              <Route exact path="/about-us">
+                {this.props.auth0.isAuthenticated && <AboutUs />}
+              </Route>
+              <Route exact path="/reviews">
+                {this.props.auth0.isAuthenticated && <Reviews />}
               </Route>
             </Switch>
           </Router>
         </section>
-        <Footer />
+        {/* <Footer /> */}
       </>
     );
   }
