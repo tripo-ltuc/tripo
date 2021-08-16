@@ -9,6 +9,7 @@ import './App.css';
 import {BrowserRouter as Router,Switch,Route} from "react-router-dom";
 import AboutUs from './components/pages/AboutUs';
 import Reviews from './components/pages/Reviews';
+import Discover from './components/pages/Discover';
 
 class App extends React.Component {
   render() {
@@ -31,6 +32,9 @@ class App extends React.Component {
               </Route>
               <Route exact path="/reviews">
                 {this.props.auth0.isAuthenticated && (<Reviews/>)}
+              </Route>
+              <Route exact path="/discover">
+                {this.props.auth0.isAuthenticated && (<Discover/>)}
               </Route>
               
             </Switch>
