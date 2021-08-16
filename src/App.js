@@ -39,6 +39,9 @@ class App extends React.Component {
               <Route exact path="/reviews">
                 {this.props.auth0.isAuthenticated && (<Reviews/>)}
               </Route>
+              <Route exact path="/discover">
+                {this.props.auth0.isAuthenticated && (<Discover/>)}
+              </Route>
               
             </Switch>
           </Router>
