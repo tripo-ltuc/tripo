@@ -1,8 +1,14 @@
   .footer-home{
-    background-color: #1d1919;
+    background-color: #242323;
     /* background: linear-gradient(#502c2c, #484e8d);    color: white; */
-    margin-top: -5%;
-    color: white;
+    color: rgb(255, 255, 255);
+    clear: both;
+    position: absolute;
+    width: 100%;
+  }
+  .footer-side{
+    position: relative;
+
   }
 
   .social-container {
@@ -15,7 +21,7 @@
     display: inline-block;
   }
   a.social:hover {
-    transform: translateY(-2px);
+    transform: translateY(-10px);
   }
 
   a.youtube {
@@ -31,10 +37,14 @@
   }
   
   a.instagram {
-    color:#df507f;;
+    color:#df507f;
   }
 
   .txt-social{
     text-align: right;
     margin-right: -3%;
+    
+  }
+  .title-footer{
+    text-align: center;
   }

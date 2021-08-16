@@ -2,6 +2,46 @@
     height: 2100px;
 
   }
+
+
+.wrap {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-home {
+  background-color:#7059a7;
+    width: 20%;
+    height: 12%;
+    margin-top:1%;
+    margin-left: 40%;
+    display:inline-block;
+    padding:0.5em 2em;
+    font-family: 'Rancho', cursive;
+    font-size: 30px;
+    color:#FFFFFF;
+    text-align:center;
+    transition: all 0.2s;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-weight: 500;
+  border: none;
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+  }
+
+.button-home:hover {
+  background-color: #C06C84;
+  box-shadow: 0px 15px 20px #F38181;
+  color: #fff;
+  transform:scale(1.15);
+
+}
   body{
    background-color:  rgb(253, 239, 221);
   }
@@ -33,14 +73,23 @@ h2{
   /* background: -webkit-linear-gradient(#FFFFD2,#8f7ac2,#ffabcb); */
   background: -webkit-linear-gradient(#99DDCC,#FFD3B6,#BAD7DF);
 
-  -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 
 }
 .imgleft{
-  border-radius: 25% 10%;
+  box-shadow: 5px 5px 10px 7px rgba(0,0,0,0.25), -5px -5px 10px 7px rgba(0,0,0,0.22);
+  transition: 0.5s;
+  padding-left: 28px;
+  margin-left: -20px;
+  border-radius: 5%;
 }
+.imgleft:hover{
+  transform: scale(0.9, 0.9);
+  box-shadow: 5px 5px 10px 7px rgba(0,0,0,0.25), -5px -5px 10px 7px rgba(0,0,0,0.22);
 
+  }
+/*
 .btnHome{
   background-color:#b64b74;
     width: 20%;
@@ -55,17 +104,17 @@ h2{
     color:#FFFFFF;
     text-align:center;
     transition: all 0.2s;
-  }
+  } */
 
-  .btnHome:hover{
+  /* .btnHome:hover{
     background-color:#7059a7;
-    }
+    } */
 
 
-.cards{
+.cards-home{
    width: 120%;
 }
-.cards-list {
+.cards-list-home {
   margin-top: 5%;
     z-index: 0;
     width: 100%;
@@ -74,7 +123,7 @@ h2{
     flex-wrap: wrap;
   }
 
-  .card {
+  .card-home {
     margin: 30px auto;
     width: 300px;
     height: 300px;
@@ -84,20 +133,20 @@ h2{
     transition: 0.4s;
   }
 
-  .card .card_image {
+  .card-home .card_image-home {
     width: inherit;
     height: inherit;
     border-radius: 40px;
   }
 
-  .card .card_image img {
+  .card-home .card_image-home img {
     width: inherit;
     height: inherit;
     border-radius: 40px;
     object-fit: cover;
   }
 
-  .card .card_title {
+  .card-home .card_title-home {
     text-align: center;
     border-radius: 0px 0px 40px 40px;
     font-family: sans-serif;
@@ -107,7 +156,7 @@ h2{
     height: 40px;
   }
 
-  .card:hover {
+  .card-home:hover {
     transform: scale(0.9, 0.9);
     box-shadow: 5px 5px 30px 15px rgba(0,0,0,0.25),
       -5px -5px 30px 15px rgba(0,0,0,0.22);
@@ -122,7 +171,7 @@ h2{
   }
 
   @media all and (max-width: 500px) {
-    .card-list {
+    .card-list-home {
       /* On small screens, we are no longer using row direction but column */
       flex-direction: column;
     }

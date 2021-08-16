@@ -32,8 +32,29 @@
     color:#FFFFFF;
     text-align:center;
     transition: all 0.2s;
+    
+    background-color:#14998e;
+    display:inline-block;
+    padding:0.5em 2em;
+    font-family: 'Rancho', cursive;
+    font-size: 30px;
+    color:#FFFFFF;
+    text-align:center;
+    transition: all 0.2s;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-weight: 500;
+  border: none;
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
   }
   
   .btnLogin:hover{
-    background-color:#1c8640;
+    background-color: #2ee5cd;
+  box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+  color: #fff;
+  transform: translateY(-7px);
     }
