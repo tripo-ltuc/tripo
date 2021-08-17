@@ -60,8 +60,7 @@ class Reviews extends React.Component {
       cityImg: event.target.imgName.value,
       userName: user,
       userEmail: user.email,
-      userImg: user.
-
+      userImg: user,
     };
 
     console.log(newObject);
