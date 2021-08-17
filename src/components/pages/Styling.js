@@ -72,14 +72,13 @@ export default function App() {
               <div className="text-white">
                 <h1 className="mb-3">Heading</h1>
                 <h4 className="mb-3">Subheading</h4>
-                <Button
-                  // className="btn btn-outline-light btn-lg"
-                  // href="#!"
-                  // role="button"
-                  onClick={(alert = "hi")}
+                <a
+                  className="btn btn-outline-light btn-lg"
+                  href="#!"
+                  role="button"
                 >
                   Call to action
-                </Button>
+                </a>
               </div>
             </div>
           </div>
