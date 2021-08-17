@@ -2,6 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 import { Auth0Provider } from "@auth0/auth0-react";
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />;
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+
 
 ReactDOM.render(
   <Auth0Provider

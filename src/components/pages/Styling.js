@@ -1,129 +1,208 @@
+import React from "react";
+import Card from "react-bootstrap/Card";
+import Button from "react-bootstrap/Button";
+import {
+  MDBCard,
+  MDBCardImage,
+  MDBCardBody,
+  MDBCardTitle,
+  MDBCardText,
+  MDBCardLink,
+  MDBListGroup,
+  MDBListGroupItem,
+} from "mdb-react-ui-kit";
+
+import {
+  MDBNavbar,
+  MDBNavbarNav,
+  MDBNavbarItem,
+  MDBNavbarLink,
+  MDBNavbarToggler,
+  MDBContainer,
+  MDBIcon,
+} from "mdb-react-ui-kit";
+
+export default function App() {
+  return (
+    <>
+      <header>
+        <MDBNavbar expand="lg" light bgColor="white">
+          <MDBContainer fluid>
+            <MDBNavbarToggler
+              aria-controls="navbarExample01"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <MDBIcon fas icon="bars" />
+            </MDBNavbarToggler>
+            <div className="collapse navbar-collapse" id="navbarExample01">
+              <MDBNavbarNav right className="mb-2 mb-lg-0">
+                <MDBNavbarItem active>
+                  <MDBNavbarLink aria-current="page" href="#">
+                    Home
+                  </MDBNavbarLink>
+                </MDBNavbarItem>
+                <MDBNavbarItem>
+                  <MDBNavbarLink href="#">Features</MDBNavbarLink>
+                </MDBNavbarItem>
+                <MDBNavbarItem>
+                  <MDBNavbarLink href="#">Pricing</MDBNavbarLink>
+                </MDBNavbarItem>
+                <MDBNavbarItem>
+                  <MDBNavbarLink href="#">About</MDBNavbarLink>
+                </MDBNavbarItem>
+              </MDBNavbarNav>
+            </div>
+          </MDBContainer>
+        </MDBNavbar>
+
+        <div
+          className="p-5 text-center bg-image"
+          style={{
+            backgroundImage:
+              "url('https://mdbcdn.b-cdn.net/img/new/slides/041.jpg')",
+            height: 400,
+          }}
+        >
+          <div
+            className="mask"
+            style={{ backgroundColor: "rgba(0, 0, 0, 0.6)" }}
+          >
+            <div className="d-flex justify-content-center align-items-center h-100">
+              <div className="text-white">
+                <h1 className="mb-3">Heading</h1>
+                <h4 className="mb-3">Subheading</h4>
+                <Button
+                  // className="btn btn-outline-light btn-lg"
+                  // href="#!"
+                  // role="button"
+                  onClick={(alert = "hi")}
+                >
+                  Call to action
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div>
+        <MDBCard style={{ width: "18rem" }}>
+          <MDBCardImage
+            position="top"
+            alt="..."
+            src="https://mdbcdn.b-cdn.net/img/new/standard/city/062.jpg"
+          />
+          <MDBCardBody>
+            <MDBCardTitle>Card title</MDBCardTitle>
+            <MDBCardText>
+              Some quick example text to build on the card title and make up the
+              bulk of the card's content.
+            </MDBCardText>
+          </MDBCardBody>
+          <MDBListGroup flush>
+            <MDBListGroupItem>Cras justo odio</MDBListGroupItem>
+            <MDBListGroupItem>Dapibus ac facilisis in</MDBListGroupItem>
+            <MDBListGroupItem>Vestibulum at eros</MDBListGroupItem>
+          </MDBListGroup>
+          <MDBCardBody>
+            <MDBCardLink href="#">Card link</MDBCardLink>
+            <MDBCardLink href="#">Card link</MDBCardLink>
+          </MDBCardBody>
+        </MDBCard>
+      </div>
+    </>
+  );
+}
+
+//    <div>
+//   {this.state.citiesData &&
+//     this.state.citiesData.map((item, index) => {
+//       return (
+//         <>
+//           <Card style={{ width: "18rem" }}>
+//             <Card.Img variant="top" src={item.img} />
+//             <Card.Body>
+//               <Card.Title>{item.placeName}</Card.Title>
+//               <Card.Text>{item.userName}</Card.Text>
+//               <Card.Text>{item.comment}</Card.Text>
+//               <button
+//                 onClick={() => {
+//                   this.deleteBook(index);
+//                 }}
+//               >
+//                 Delete
+//               </button>
+//             </Card.Body>
+//           </Card>
+//         </>
+//       );
+//     })}
+// </div>
+
+{
+  /* <div className="d-grid gap-2">
+<Button variant="light" size="lg" onClick={this.showModal}>
+  Write a Review!
+</Button>
+</div> */
+}
+
+{
+  /* <Button onClick={this.props.ShowModal}></Button>; */
+}
+
 // import React from "react";
 // import { makeStyles } from "@material-ui/core/styles";
-// import clsx from "clsx";
 // import Card from "@material-ui/core/Card";
-// import CardHeader from "@material-ui/core/CardHeader";
-// import CardMedia from "@material-ui/core/CardMedia";
-// import CardContent from "@material-ui/core/CardContent";
+// import CardActionArea from "@material-ui/core/CardActionArea";
 // import CardActions from "@material-ui/core/CardActions";
-// import Collapse from "@material-ui/core/Collapse";
-// import Avatar from "@material-ui/core/Avatar";
-// import IconButton from "@material-ui/core/IconButton";
+// import CardContent from "@material-ui/core/CardContent";
+// import CardMedia from "@material-ui/core/CardMedia";
+// import Button from "@material-ui/core/Button";
 // import Typography from "@material-ui/core/Typography";
-// import { red } from "@material-ui/core/colors";
-// import FavoriteIcon from "@material-ui/icons/Favorite";
-// import ShareIcon from "@material-ui/icons/Share";
-// import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-// import MoreVertIcon from "@material-ui/icons/MoreVert";
 
-// const useStyles = makeStyles((theme) => ({
+// import AccessAlarmIcon from "@material-ui/icons/AccessAlarm";
+// import ThreeDRotation from "@material-ui/icons/ThreeDRotation";
+
+// const useStyles = makeStyles({
 //   root: {
 //     maxWidth: 345,
 //   },
 //   media: {
-//     height: 0,
-//     paddingTop: "56.25%", // 16:9
+//     height: 140,
 //   },
-//   expand: {
-//     transform: "rotate(0deg)",
-//     marginLeft: "auto",
-//     transition: theme.transitions.create("transform", {
-//       duration: theme.transitions.duration.shortest,
-//     }),
-//   },
-//   expandOpen: {
-//     transform: "rotate(180deg)",
-//   },
-//   avatar: {
-//     backgroundColor: red[500],
-//   },
-// }));
+// });
 
-// export default function RecipeReviewCard() {
+// export default function MediaCard() {
 //   const classes = useStyles();
-//   const [expanded, setExpanded] = React.useState(false);
-
-//   const handleExpandClick = () => {
-//     setExpanded(!expanded);
-//   };
 
 //   return (
 //     <Card className={classes.root}>
-//       <CardHeader
-//         avatar={
-//           <Avatar aria-label="recipe" className={classes.avatar}>
-//             R
-//           </Avatar>
-//         }
-//         action={
-//           <IconButton aria-label="settings">
-//             <MoreVertIcon />
-//           </IconButton>
-//         }
-//         title="Shrimp and Chorizo Paella"
-//         subheader="September 14, 2016"
-//       />
-//       <CardMedia
-//         className={classes.media}
-//         image="/static/images/cards/paella.jpg"
-//         title="Paella dish"
-//       />
-//       <CardContent>
-//         <Typography variant="body2" color="textSecondary" component="p">
-//           This impressive paella is a perfect party dish and a fun meal to cook
-//           together with your guests. Add 1 cup of frozen peas along with the
-//           mussels, if you like.
-//         </Typography>
-//       </CardContent>
-//       <CardActions disableSpacing>
-//         <IconButton aria-label="add to favorites">
-//           <FavoriteIcon />
-//         </IconButton>
-//         <IconButton aria-label="share">
-//           <ShareIcon />
-//         </IconButton>
-//         <IconButton
-//           className={clsx(classes.expand, {
-//             [classes.expandOpen]: expanded,
-//           })}
-//           onClick={handleExpandClick}
-//           aria-expanded={expanded}
-//           aria-label="show more"
-//         >
-//           <ExpandMoreIcon />
-//         </IconButton>
-//       </CardActions>
-//       <Collapse in={expanded} timeout="auto" unmountOnExit>
+//       <CardActionArea>
+//         <CardMedia
+//           className={classes.media}
+//           image="/static/images/cards/contemplative-reptile.jpg"
+//           title="Contemplative Reptile"
+//         />
 //         <CardContent>
-//           <Typography paragraph>Method:</Typography>
-//           <Typography paragraph>
-//             Heat 1/2 cup of the broth in a pot until simmering, add saffron and
-//             set aside for 10 minutes.
+//           <Typography gutterBottom variant="h5" component="h2">
+//             Lizard
 //           </Typography>
-//           <Typography paragraph>
-//             Heat oil in a (14- to 16-inch) paella pan or a large, deep skillet
-//             over medium-high heat. Add chicken, shrimp and chorizo, and cook,
-//             stirring occasionally until lightly browned, 6 to 8 minutes.
-//             Transfer shrimp to a large plate and set aside, leaving chicken and
-//             chorizo in the pan. Add pimentón, bay leaves, garlic, tomatoes,
-//             onion, salt and pepper, and cook, stirring often until thickened and
-//             fragrant, about 10 minutes. Add saffron broth and remaining 4 1/2
-//             cups chicken broth; bring to a boil.
-//           </Typography>
-//           <Typography paragraph>
-//             Add rice and stir very gently to distribute. Top with artichokes and
-//             peppers, and cook without stirring, until most of the liquid is
-//             absorbed, 15 to 18 minutes. Reduce heat to medium-low, add reserved
-//             shrimp and mussels, tucking them down into the rice, and cook again
-//             without stirring, until mussels have opened and rice is just tender,
-//             5 to 7 minutes more. (Discard any mussels that don’t open.)
-//           </Typography>
-//           <Typography>
-//             Set aside off of the heat to let rest for 10 minutes, and then
-//             serve.
+//           <Typography variant="body2" color="textSecondary" component="p">
+//             Lizards are a widespread group of squamate reptiles, with over 6,000
+//             species, ranging across all continents except Antarctica
 //           </Typography>
 //         </CardContent>
-//       </Collapse>
+//       </CardActionArea>
+//       <CardActions>
+//         <Button size="small" color="primary">
+//           Share
+//         </Button>
+//         <Button size="small" color="primary">
+//           Learn More
+//         </Button>
+//       </CardActions>
 //     </Card>
 //   );
 // }
