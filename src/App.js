@@ -16,7 +16,7 @@ class App extends React.Component {
       <>
         <section>
           <Router>
-            <Header />
+            {/* <Header /> */}
             <Switch>
               
               <Route exact path="/">
@@ -43,7 +43,7 @@ class App extends React.Component {
             </Switch>
           </Router>
         </section>
-        <Footer />
+        {/* <Footer /> */}
       </>
     );
   }
