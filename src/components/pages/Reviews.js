@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 import React from "react";
 import axios from "axios";
 
@@ -166,4 +164,3 @@ class Reviews extends React.Component {
 }
 
 export default Reviews;
->>>>>>> 5c118d8fdac01dd6faba6452e0faade3035f79c0

@@ -3,9 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../UI/Home.css';
 import { Container, Row, Col, Card } from 'react-bootstrap';
 import img0 from "../../images/compass.jpg";
-// import img02 from "../../images/02.png";
-// import img03 from "../../images/03.png";
-// import img04 from "../../images/04.png";
+import { Link } from "react-router-dom";
 import { Button, CardBody } from "reactstrap";
 class Home extends React.Component {
   render() {
@@ -15,7 +13,9 @@ class Home extends React.Component {
 
           <div className="bg-home">
             <h2>Welcome to <span>TRIPO</span></h2>
-            <Button className="button-home">DISCOVER</Button>
+            <Link to="/discover"><Button className="button-home">DISCOVER</Button></Link>
+            {/* <a href="#link" class="button-home" role="button">DISCOVER</a> */}
+
           </div>
           
           
