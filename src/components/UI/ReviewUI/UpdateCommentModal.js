@@ -7,6 +7,7 @@ class UpdateCommentModal extends Component{
         event.preventDefault();
         
         const comment = event.target.comment.value;
+        console.log("in handler and the value :", comment);
         this.props.updateComment(comment);
         this.props.setCommentModalFlag(false);
         
