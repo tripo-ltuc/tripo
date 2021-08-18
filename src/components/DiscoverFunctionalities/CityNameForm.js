@@ -6,6 +6,7 @@ import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/FormCheck';
 import Col from 'react-bootstrap/FormCheck';
 import axios from 'axios';
+import '../UI/Discover.css';
 
 class CityNameForm extends React.Component {
 
@@ -36,6 +37,11 @@ class CityNameForm extends React.Component {
                 flag : true
             })
             this.props.getCityName(CN , result.data.lat , result.data.lon , true);
+            this.props.getWeatherData();
+            this.props.getHotelData();
+            this.props.getCovidData();
+            this.props.getTursData();
+            this.props.getRestaurantData();
             console.log(result.data)
         })
         .catch((err) =>{
@@ -48,24 +54,26 @@ class CityNameForm extends React.Component {
     render() {
 
         return (
-            <>
+            <><section className="bg-discover">  
+                <div  style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+
+        }} className="form-discover">
                 <Form onSubmit={this.submitHandler}>
-                    <Row className="align-items-center" style={{ display: 'flex' }}>
-                        <Col xs="auto" className="my-1">
                             <FloatingLabel
                                 controlId="floatingInput"
                                 label="Type City Name"
-                                className="mb-3"
+                                className="mb-2"
                                 style={{ width: '40rem' }}
                             >
                                 <Form.Control type="text" name="CityName" placeholder="City Name" />
                             </FloatingLabel>
-                        </Col>
-                        <Col xs="auto" className="my-1">
-                            <Button type="submit" style={{ height: '3rem' }}>Discover</Button>
-                        </Col>
-                    </Row>
+                            <Button className="btn-discover" type="submit" style={{ height: '3rem' }}>Explore !</Button>
                 </Form>
+                </div>
+                </section>
             </>
         )
 
