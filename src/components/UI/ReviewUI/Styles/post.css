@@ -1,0 +1,22 @@
+.card{
+    width: 50rem;
+    border-radius: 3px;
+    margin-left: 1rem;
+}
+
+.main-body{
+    display: flex;
+    flex-direction: column;
+}
+
+.card-title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title-body{
+    display: flex;
+    align-items: center;
+    /* justify-content:  */
+}

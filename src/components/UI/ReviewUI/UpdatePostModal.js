@@ -5,14 +5,14 @@ class UpdatePostModal extends Component{
 
     updatePost = event =>{
         event.preventDefault();
+        console.log("updatePost");
 
-        const cityName = event.target.cityName.Value;
-        const cityImg = event.target.cityImg.valuel;
-        const content = event.target.content.valuel;
+        const cityName = event.target.cityName.value;
+        const cityImg = event.target.cityImg.value;
+        const content = event.target.content.value;
         
-        this.props.updatePost(cityName, cityImg, content);
-        this.props.closeUpdateModal();
-        this.props.updateUserPost();
+        this.props.updateUserPost(cityName, cityImg, content);
+        this.props.setUpdateModalFlag(false);
     };
 
     render(){

@@ -4,17 +4,19 @@ import AddPostModal from "../UI/ReviewUI/AddPostModal";
 import Post from "../UI/ReviewUI/Post";
 import UpdatePostModal from "../UI/ReviewUI/UpdatePostModal";
 import UpdateCommentModal from "../UI/ReviewUI/UpdateCommentModal";
-
+import { withAuth0 } from "@auth0/auth0-react";
+import "../UI/ReviewUI/Styles/reviewPage.css"
+import ReviewHeader from "../UI/ReviewUI/ReviewHeader";
 class Reviews extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       server: process.env.REACT_APP_URL,
-      showFlags: {
-        addPostFlag: false,
-        updatePostFlag: false,
-        updatePostComment : false
-      },
+      showPosts: false,
+      addPostFlag: false,
+      updatePostFlag: false,
+      updatePostComment : false,
+      dataLength: 0,
       postData: [],
       _id: 0,
       cityName: 'all',
@@ -33,7 +35,8 @@ class Reviews extends React.Component {
     .get(`${this.state.server}/${endPoint}`, {params: {cityName: this.state.cityName}})
     .then(results => {
       this.setState({
-        postData: results.data
+        postData: results.data,
+        dataLength: results.data.length
       });
     })
     .catch(err => console.log(err));
@@ -41,52 +44,55 @@ class Reviews extends React.Component {
 
   addingReviews = (event) => {
     event.preventDefault();
-
+    const {user} = this.props.auth0;
+    console.log(user);
     const newObject = {
-      value: event.target.confirmValue.value,
-      placeName: event.target.nameOfCity.value,
-      userName: event.target.personName.value,
-      comment: event.target.userComment.value,
-      img: event.target.imgName.value,
+      userImg: user.picture,
+      userName: user.nickname,
+      userEmail: user.email,
+      cityName: event.target.nameOfCity.value,
+      content: event.target.userComment.value,
+      cityImg: event.target.imgName.value,
     };
-    console.log(newObject);
+
+    this.closeModal();
     axios
-      .post(`${this.state.server}/addCards`, newObject)
-      .then((results) => {
-        this.setState({
-          citiesData: results.data,
-        });
-      })
-      .catch((err) => {
-        console.log(err);
+    .post(`${this.state.server}/addCard`, newObject)
+    .then((results) => {
+      this.setState({
+        postData: results.data,
+        dataLength: results.data.length
       });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+    
   };
 
   
   showModal = () => {
     this.setState({
-      addPostFlag: {
-        addPostFlag: true
-      }
+      addPostFlag: true
     });
   };
 
 
   closeModal = () => {
     this.setState({
-      addPostFlag: {
-        addPostFlag: false
-      }
+      addPostFlag: false
     });
   };
 
 
-  deletePost = (id) => {
+  deletePost = id => {
+    console.log('id: ', id);
     axios
-    .delete(`${this.state.server}/deleteCard/:id`, {params: {id: id}})
+    .delete(`${this.state.server}/deleteCard/${id}`)
     .then(result => {
       this.setState({
-        postData: result.data
+        postData: result.data,
+        dataLength: result.data.length
       });
     })
     .catch();
@@ -94,9 +100,7 @@ class Reviews extends React.Component {
 
   updatePost = (_id, id) => {
     this.setState({
-      showFlags: {
-        updatePostFlag: true,
-      },
+      updatePostFlag: true,
       _id: _id,
       cityName: this.state.postData[id].cityName,
       cityImg: this.state.postData[id].cityImg,
@@ -106,12 +110,18 @@ class Reviews extends React.Component {
 
   updateUserPost = (cityName, cityImg, content) => {
     const id = this.state._id;
+    const params =  {
+      cityName: cityName,
+      cityImg: cityImg,
+      content: content
+    }
+
     axios
-    .put(`${this.state.server}/updateCard/:id`, 
-    {params: {id: id, cityName: cityName, cityImg: cityImg, content: content}})
+    .put(`${this.state.server}/updateCard/${id}`, params)
     .then(result => {
       this.setState({
-        postData: result.data
+        postData: result.data,
+        dataLength: result.data.length
       });
     })
     .catch(err => console.log(err));
@@ -119,32 +129,46 @@ class Reviews extends React.Component {
 
   setUpdateModalFlag = toShow => {
     this.setState({
-      showFlags:{
-        updatePostFlag: toShow
-      }
+      updatePostFlag: toShow
     });
   };
 
   
   
-  AddComment = (_id, comment) => {
+  addComment = (_id, comment) => {
+    console.log('in addComment');
+    console.log("comment: ", comment);
+    const params = {
+      id: _id,
+      comment: comment
+    };
+
+    console.log("param:" , params);
+
     axios
-    .put(`${this.state.server}/addCardComment/:id`, {params: { id: _id, comment: comment}})
+    .post(`http://localhost:3001/addCardComment`, params)
     .then(result => {
+      console.log('in then result: ', result);
       this.setState({
-        postData: result.data
+        postData: result.data,
+        dataLength: result.data.length
       });
     })
     .catch(err => console.log(err));
   };
   
   
-  deleteComment = (commentIdx, _id) => {
+  deleteComment = (commentIdx, id) => {
+  const params ={
+    commentIdx: commentIdx
+  }
+
     axios
-    .delete(`${this.state.server}/deleteCardComment/:id`, {params: {id: _id, idx: commentIdx}})
+    .delete(`${this.state.server}/deleteCardComment/${id}`, params)
     .then(result => {
       this.setState({
-        postData: result.data
+        postData: result.data,
+        dataLength: result.data.length
       });
     })
     .catch(err => console.log(err));
@@ -153,9 +177,7 @@ class Reviews extends React.Component {
 
   editComment = (post_id, postIdx, commentIdx) => {
     this.setState({
-      showFlag:{
-          updatePostComment: true
-        },
+        updatePostComment: true,
         comment: this.state.postData[postIdx].comments[commentIdx],
         _id: post_id,
         commentIdx: commentIdx
@@ -164,13 +186,27 @@ class Reviews extends React.Component {
     };
     
 
-    updateComment = newComment => {
+    updateComment = comment => {
+
+      const {user} = this.props.auth0;
+
+      const newComment = {
+        userImg: user.picture,
+        userName: user.nickname,
+        userComment: comment,
+      };
+      const params = {
+        commentIdx: this.state.commentIdx,
+        newComment: newComment
+        }
+
+        console.log(params);
         axios
-        .put(`${this.state.server}/updateCardComment/:id`,
-         {params: {id: this.state._id, commentIdx: this.state.commentIdx, newComment: newComment}})
+        .put(`${this.state.server}/updateCardComment/${this.state._id}`, params)
         .then(result => {
           this.setState({
-            postData: result.data
+            postData: result.data,
+            dataLength: result.data.length
           });
         })
         .catch(err => console.log(err));
@@ -179,9 +215,7 @@ class Reviews extends React.Component {
 
     setCommentModalFlag = toShow => {
       this.setState({
-        showFlags:{
-          updatePostComment  : toShow
-        }
+        updatePostComment : toShow
       });
     };
     
@@ -189,42 +223,49 @@ class Reviews extends React.Component {
     render() { 
       return (
         <>
-        <button onClick={this.props.showModal}>Add A Post</button>
-        <AddPostModal
-         addingReviews={this.addingReviews}
-         closingModal={this.closeModal}
-         show={this.state.showFlags.addPostFlag}
-            />
-      
-        {this.state.postData.length &&
-        this.state.postData.map((item, idx)=> {
-          return <Post item={item} idx={idx} 
-                  deletePost={this.deletePost} 
-                  updatePost={this.updatePost}
-                  AddComment={this.AddComment}
-                  deleteComment={this.deleteComment}
-                  />
-        })}
+          <ReviewHeader showModal={this.showModal}/>
+          <div className= "main-div">
+            {/* <button onClick={this.showModal}>Add A Post</button> */}
+            {this.state.addPostFlag &&
+            <AddPostModal
+            addingReviews = {this.addingReviews}
+            closingModal = {this.closeModal}
+            show={this.state.addPostFlag}
+                />}
 
-        {this.state.showFlags.updatePostFlag && <UpdatePostModal 
-          cityName={this.state.cityName}
-          cityImg={this.state.cityImg}
-          content={this.state.content}
-          toShow={this.state.showFlags.updatePostFlag}
-          updateUserPost={this.updateUserPost}
-          setUpdateModalFlag={this.setUpdateModalFlag}
-          />}
+            {this.state.dataLength &&
+            this.state.postData.map((item, idx)=> {
+              return <Post 
+                      item={item}
+                      idx={idx} 
+                      deletePost={this.deletePost} 
+                      updatePost={this.updatePost}
+                      addComment={this.addComment}
+                      deleteComment={this.deleteComment}
+                      editComment={this.editComment}
+                      />
+            })}
 
-          {this.state.showFlags.updatePostComment && 
-          <UpdateCommentModal 
-          comment={this.state.content}
-          toShow={this.state.showFlags.updatePostComment}
-          setCommentModalFlag={this.setCommentModalFlag}
-          updateComment={this.updateComment}
-           />}
+            {this.state.updatePostFlag && <UpdatePostModal 
+              cityName={this.state.cityName}
+              cityImg={this.state.cityImg}
+              content={this.state.content}
+              toShow={this.state.updatePostFlag}
+              updateUserPost={this.updateUserPost}
+              setUpdateModalFlag={this.setUpdateModalFlag}
+              />}
+
+              {this.state.updatePostComment && 
+              <UpdateCommentModal 
+              comment={this.state.content}
+              toShow={this.state.updatePostComment}
+              setCommentModalFlag={this.setCommentModalFlag}
+              updateComment={this.updateComment}
+              />}
+          </div>
       </>
      );
     }
 }
 
-export default Reviews;
+export default withAuth0(Reviews);
