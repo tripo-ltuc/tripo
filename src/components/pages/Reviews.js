@@ -1,166 +1,271 @@
 import React from "react";
 import axios from "axios";
-
-import Card from "react-bootstrap/Card";
-import CardsModal from "../UI/CardsModal";
-
-// import Button from "react-bootstrap/Button";
-// import ModalForm from "./component/ModalForm";
-
+import AddPostModal from "../UI/ReviewUI/AddPostModal";
+import Post from "../UI/ReviewUI/Post";
+import UpdatePostModal from "../UI/ReviewUI/UpdatePostModal";
+import UpdateCommentModal from "../UI/ReviewUI/UpdateCommentModal";
+import { withAuth0 } from "@auth0/auth0-react";
+import "../UI/ReviewUI/Styles/reviewPage.css"
+import ReviewHeader from "../UI/ReviewUI/ReviewHeader";
 class Reviews extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       server: process.env.REACT_APP_URL,
-      citiesData: [],
-
-      postData:[],
-      //   show: false,
-
-      // city: "",
-      show: false,
+      showPosts: false,
+      addPostFlag: false,
+      updatePostFlag: false,
+      updatePostComment : false,
+      dataLength: 0,
+      postData: [],
+      _id: 0,
+      cityName: 'all',
+      cityImg: '',
+      content: '',
+      comment: '',
+      linkes: 0,
+      commentIdx: -1
     };
   }
 
   componentDidMount = () => {
     // const { user } = this.props.auth0;
-
+    const endPoint = this.state.cityName === 'all' ? 'getAllCards' : 'getCityCards';
     axios
-      .get(`${this.state.server}/cards?city=Amman`)
-      .then((results) => {
-        this.setState({
-          citiesData: results.data,
-        });
-        console.log(this.state.citiesData);
-      })
-
-      .catch((err) => {
-        console.log(err);
+    .get(`${this.state.server}/${endPoint}`, {params: {cityName: this.state.cityName}})
+    .then(results => {
+      this.setState({
+        postData: results.data,
+        dataLength: results.data.length
       });
+    })
+    .catch(err => console.log(err));
   };
-
-  ///////////////////////////////////
 
   addingReviews = (event) => {
     event.preventDefault();
-
+    const {user} = this.props.auth0;
+    console.log(user);
     const newObject = {
-      value: event.target.confirmValue.value,
-      placeName: event.target.nameOfCity.value,
-      userName: event.target.personName.value,
-      comment: event.target.userComment.value,
-      img: event.target.imgName.value,
+      userImg: user.picture,
+      userName: user.nickname,
+      userEmail: user.email,
+      cityName: event.target.nameOfCity.value,
+      content: event.target.userComment.value,
+      cityImg: event.target.imgName.value,
     };
-    console.log(newObject);
+
+    this.closeModal();
     axios
-      .post(`${this.state.server}/addCards`, newObject)
-      .then((results) => {
-        this.setState({
-          citiesData: results.data,
-        });
-      })
-      .catch((err) => {
-        console.log(err);
+    .post(`${this.state.server}/addCard`, newObject)
+    .then((results) => {
+      this.setState({
+        postData: results.data,
+        dataLength: results.data.length
       });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+    
   };
 
+  
   showModal = () => {
     this.setState({
-      show: true,
+      addPostFlag: true
     });
   };
-  closingModal = () => {
+
+
+  closeModal = () => {
     this.setState({
-      show: false,
+      addPostFlag: false
     });
   };
 
-//////////////////////////////
+
+  deletePost = id => {
+    console.log('id: ', id);
+    axios
+    .delete(`${this.state.server}/deleteCard/${id}`)
+    .then(result => {
+      this.setState({
+        postData: result.data,
+        dataLength: result.data.length
+      });
+    })
+    .catch();
+  };
+
+  updatePost = (_id, id) => {
+    this.setState({
+      updatePostFlag: true,
+      _id: _id,
+      cityName: this.state.postData[id].cityName,
+      cityImg: this.state.postData[id].cityImg,
+      content: this.state.postData[id].content,
+    });
+  };
+
+  updateUserPost = (cityName, cityImg, content) => {
+    const id = this.state._id;
+    const params =  {
+      cityName: cityName,
+      cityImg: cityImg,
+      content: content
+    }
+
+    axios
+    .put(`${this.state.server}/updateCard/${id}`, params)
+    .then(result => {
+      this.setState({
+        postData: result.data,
+        dataLength: result.data.length
+      });
+    })
+    .catch(err => console.log(err));
+  };
+
+  setUpdateModalFlag = toShow => {
+    this.setState({
+      updatePostFlag: toShow
+    });
+  };
+
   
-  // deleteBook = async (index) => {
-  //   // console.log(index);
-  //   // const { user } = this.props.auth0;
-  //   const newArrayOfBooks = this.state.postData.filter((postData, idx) => {
-  //     return idx !== index;
-  //   });
-  //   console.log(newArrayOfBooks);
-  //   this.setState({
-  //     postData: newArrayOfBooks
-  //   });
-  //   const deleteObj = {
-  //     city:'Amman'
-  //   }
-  //   await axios.delete(`${this.state.server}/deleteCards/${index}`, { params: deleteObj });
-  // }
+  
+  addComment = (_id, comment) => {
+    console.log('in addComment');
+    console.log("comment: ", comment);
+    const params = {
+      id: _id,
+      comment: comment
+    };
 
-///////////////////
+    console.log("param:" , params);
 
-
-
-
-
-
-
-
-  //////////////////////
-  render() {
-    return (
-      <>
-        <button onClick={this.showModal}>Write a Review!</button>
-        <div>
-          {this.state.citiesData &&
-            this.state.citiesData.map((item ) => {
-              return (
-                <>
-                  <Card style={{ width: "18rem" }}>
-                    <Card.Img variant="top" src={item.img} />
-                    <Card.Body>
-                      <Card.Title>{item.placeName}</Card.Title>
-                      <Card.Text>{item.userName}</Card.Text>
-                      <Card.Text>{item.comment}</Card.Text>
-                      {/* <button onClick={() => { this.deleteBook(index) }}>Delete</button> */}
-                    </Card.Body>
-                  </Card>
-
-                  <CardsModal
-                    addingReviews={this.addingReviews}
-                    closingModal={this.closingModal}
-                    show={this.state.show}
-                  />
-                </>
-              );
-            })}
-        </div>
-
-</>
-
-        // <div>
-        //   {this.state.postData &&
-        //     this.state.postData.map((item , index) => {
-        //       return (
-        //         <>
-        //           <Card style={{ width: "18rem" }}>
-        //             <Card.Img variant="top" src={item.img} />
-        //             <Card.Body>
-        //               <Card.Title>{item.placeName}</Card.Title>
-        //               <Card.Text>{item.userName}</Card.Text>
-        //               <Card.Text>{item.comment}</Card.Text>
-        //               {/* <button onClick={() => { this.deleteBook(index) }}>Delete</button> */}
-        //             </Card.Body>
-        //           </Card>
-
-        //           <CardsModal
-        //             addingReviews={this.addingReviews}
-        //             closingModal={this.closingModal}
-        //             show={this.state.show}
-        //           />
-        //         </>
-        //       );
-        //     })}
-        // </div>
-      // </>
-    );
+    axios
+    .post(`http://localhost:3001/addCardComment`, params)
+    .then(result => {
+      console.log('in then result: ', result);
+      this.setState({
+        postData: result.data,
+        dataLength: result.data.length
+      });
+    })
+    .catch(err => console.log(err));
+  };
+  
+  
+  deleteComment = (commentIdx, id) => {
+  const params ={
+    commentIdx: commentIdx
   }
+
+    axios
+    .delete(`${this.state.server}/deleteCardComment/${id}`, params)
+    .then(result => {
+      this.setState({
+        postData: result.data,
+        dataLength: result.data.length
+      });
+    })
+    .catch(err => console.log(err));
+  };
+  
+
+  editComment = (post_id, postIdx, commentIdx) => {
+    this.setState({
+        updatePostComment: true,
+        comment: this.state.postData[postIdx].comments[commentIdx],
+        _id: post_id,
+        commentIdx: commentIdx
+      });
+      
+    };
+    
+
+    updateComment = comment => {
+
+      const {user} = this.props.auth0;
+
+      const newComment = {
+        userImg: user.picture,
+        userName: user.nickname,
+        userComment: comment,
+      };
+      const params = {
+        commentIdx: this.state.commentIdx,
+        newComment: newComment
+        }
+
+        console.log(params);
+        axios
+        .put(`${this.state.server}/updateCardComment/${this.state._id}`, params)
+        .then(result => {
+          this.setState({
+            postData: result.data,
+            dataLength: result.data.length
+          });
+        })
+        .catch(err => console.log(err));
+    };
+
+
+    setCommentModalFlag = toShow => {
+      this.setState({
+        updatePostComment : toShow
+      });
+    };
+    
+
+    render() { 
+      return (
+        <>
+          <ReviewHeader showModal={this.showModal}/>
+          <div className= "main-div">
+            {/* <button onClick={this.showModal}>Add A Post</button> */}
+            {this.state.addPostFlag &&
+            <AddPostModal
+            addingReviews = {this.addingReviews}
+            closingModal = {this.closeModal}
+            show={this.state.addPostFlag}
+                />}
+
+            {this.state.dataLength &&
+            this.state.postData.map((item, idx)=> {
+              return <Post 
+                      item={item}
+                      idx={idx} 
+                      deletePost={this.deletePost} 
+                      updatePost={this.updatePost}
+                      addComment={this.addComment}
+                      deleteComment={this.deleteComment}
+                      editComment={this.editComment}
+                      />
+            })}
+
+            {this.state.updatePostFlag && <UpdatePostModal 
+              cityName={this.state.cityName}
+              cityImg={this.state.cityImg}
+              content={this.state.content}
+              toShow={this.state.updatePostFlag}
+              updateUserPost={this.updateUserPost}
+              setUpdateModalFlag={this.setUpdateModalFlag}
+              />}
+
+              {this.state.updatePostComment && 
+              <UpdateCommentModal 
+              comment={this.state.content}
+              toShow={this.state.updatePostComment}
+              setCommentModalFlag={this.setCommentModalFlag}
+              updateComment={this.updateComment}
+              />}
+          </div>
+      </>
+     );
+    }
 }
 
-export default Reviews;
+export default withAuth0(Reviews);

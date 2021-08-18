@@ -44,38 +44,24 @@ class HotelDataRendering extends React.Component {
            {<h1 style={{ textAlign: "center", color:'black'}}>Hotels</h1>}
             <br/>
             {this.props.hotelsData.map((item, idx) => {
-                return (<>
-                <Carousel slide className="w-75">
-                    {this.props.tursData.map((item, idx) => {
-                        return (
-                            <Carousel.Item>
-                                <>
-                                <Row ><Col>
-                                <Card key={idx}  style={{ width: "20%", height: "27%", display: "inline-block" , marginLeft:"10%"}}>
-                        <Card.Header style={{ width: "100%", height: "10%", }}>{item.name}</Card.Header>
-                        <Card.Body>
-                            <img style={{ width: "15rem", height: "8rem" }} src={item.cardImgUrl} alt={item.name}></img>
-                            <blockquote className="blockquote mb-0">
-                                <p>
-                                    {' '}
-                                    <strong>StarRating : {item.starRating}</strong>
-                                    <br />
-                                    <strong>Price : {item.price}</strong>
-                                </p>
-                                
-                            </blockquote>
-                        </Card.Body>
-                        <Button style={{ width: "100%", height: "10%", }} onClick={() => { this.hotelModalFun(idx) }}>More...</Button>
-                    </Card>
-                                </Col>
-                                </Row>
-                                </>
-                            </Carousel.Item>
-                        )
-                    })}
-                </Carousel>
-
-                </>)
+                return (
+                <>
+                        <Card key={idx}  style={{ width: "20%", height: "27%", display: "inline-block" , marginLeft:"10%"}}>
+                            <Card.Header style={{ width: "100%", height: "10%", }}>{item.name}</Card.Header>
+                            <Card.Body>
+                                <img style={{ width: "100%", height: "8rem" }} src={item.cardImgUrl} alt={item.name}></img>
+                                <blockquote className="blockquote mb-0">
+                                    <p>
+                                        {' '}
+                                        <strong>StarRating : {item.starRating}</strong>
+                                        <br />
+                                        <strong>Price : {item.price}</strong>
+                                    </p>
+                                    </blockquote>
+                                    </Card.Body>
+                                    <Button style={{ width: "100%", height: "10%", }} onClick={() => { this.hotelModalFun(idx) }}>More...</Button>
+                        </Card>
+                </>);
             })}
             </div>
 
