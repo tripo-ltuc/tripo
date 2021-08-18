@@ -1,71 +1,57 @@
 import React from "react";
 import axios from "axios";
-import Button from "react-bootstrap/Button";
-
-// import {
-//   MDBRow,
-//   MDBCard,
-//   MDBCardBody,
-//   MDBIcon,
-//   MDBCol,
-//   MDBCardImage,
-//   MDBInput,
-// } from "mdbreact";
-
-import Card from "react-bootstrap/Card";
-import CardsModal from "../UI/CardsModal";
-
-// import Button from "react-bootstrap/Button";
-// import ModalForm from "./component/ModalForm";
+import AddPostModal from "../UI/ReviewUI/AddPostModal";
+import Post from "../UI/ReviewUI/Post";
+import UpdatePostModal from "../UI/ReviewUI/UpdatePostModal";
+import UpdateCommentModal from "../UI/ReviewUI/UpdateCommentModal";
 
 class Reviews extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       server: process.env.REACT_APP_URL,
-      citiesData: [],
-      postData: "All",
-      show: false,
+      showFlags: {
+        addPostFlag: false,
+        updatePostFlag: false,
+        updatePostComment : false
+      },
+      postData: [],
+      _id: 0,
+      cityName: 'all',
+      cityImg: '',
+      content: '',
+      comment: '',
+      linkes: 0,
+      commentIdx: -1
     };
   }
 
   componentDidMount = () => {
+    // const { user } = this.props.auth0;
+    const endPoint = this.state.cityName === 'all' ? 'getAllCards' : 'getCityCards';
     axios
-      .get(`${this.state.server}/getCityCards?city=${this.props.cityName}`)
-      .then((results) => {
-        this.setState({
-          citiesData: results.data,
-        });
-        console.log(this.state.citiesData);
-      })
-
-      .catch((err) => {
-        console.log(err);
+    .get(`${this.state.server}/${endPoint}`, {params: {cityName: this.state.cityName}})
+    .then(results => {
+      this.setState({
+        postData: results.data
       });
+    })
+    .catch(err => console.log(err));
   };
-
-  ///////////////////////////////////
 
   addingReviews = (event) => {
     event.preventDefault();
-    const { user } = this.props.auth0;
-
-    // likes: String,
-    // userName, userEmail,  userImg,
-    ///////////////
 
     const newObject = {
-      cityName: event.target.nameOfCity.value,
-      content: event.target.userComment.value,
-      cityImg: event.target.imgName.value,
-      userName: user,
-      userEmail: user.email,
-      userImg: user,
+      value: event.target.confirmValue.value,
+      placeName: event.target.nameOfCity.value,
+      userName: event.target.personName.value,
+      comment: event.target.userComment.value,
+      img: event.target.imgName.value,
     };
-
     console.log(newObject);
     axios
-      .post(`${this.state.server}/addCard"`, newObject)
+      .post(`${this.state.server}/addCards`, newObject)
       .then((results) => {
         this.setState({
           citiesData: results.data,
@@ -76,122 +62,169 @@ class Reviews extends React.Component {
       });
   };
 
+  
   showModal = () => {
     this.setState({
-      show: true,
-    });
-  };
-  closingModal = () => {
-    this.setState({
-      show: false,
+      addPostFlag: {
+        addPostFlag: true
+      }
     });
   };
 
-  //////////////////////////////
 
-  deleteBook = async (id) => {
-    // console.log(index);
-    // const { user } = this.props.auth0;
-    const newArrayOfBooks = this.state.citiesData.filter((citiesData, idx) => {
-      return idx !== id;
-    });
-    console.log(newArrayOfBooks);
+  closeModal = () => {
     this.setState({
-      citiesData: newArrayOfBooks,
+      addPostFlag: {
+        addPostFlag: false
+      }
     });
-    const deleteObj = {
-      city: "Amman",
+  };
+
+
+  deletePost = (id) => {
+    axios
+    .delete(`${this.state.server}/deleteCard/:id`, {params: {id: id}})
+    .then(result => {
+      this.setState({
+        postData: result.data
+      });
+    })
+    .catch();
+  };
+
+  updatePost = (_id, id) => {
+    this.setState({
+      showFlags: {
+        updatePostFlag: true,
+      },
+      _id: _id,
+      cityName: this.state.postData[id].cityName,
+      cityImg: this.state.postData[id].cityImg,
+      content: this.state.postData[id].content,
+    });
+  };
+
+  updateUserPost = (cityName, cityImg, content) => {
+    const id = this.state._id;
+    axios
+    .put(`${this.state.server}/updateCard/:id`, 
+    {params: {id: id, cityName: cityName, cityImg: cityImg, content: content}})
+    .then(result => {
+      this.setState({
+        postData: result.data
+      });
+    })
+    .catch(err => console.log(err));
+  };
+
+  setUpdateModalFlag = toShow => {
+    this.setState({
+      showFlags:{
+        updatePostFlag: toShow
+      }
+    });
+  };
+
+  
+  
+  AddComment = (_id, comment) => {
+    axios
+    .put(`${this.state.server}/addCardComment/:id`, {params: { id: _id, comment: comment}})
+    .then(result => {
+      this.setState({
+        postData: result.data
+      });
+    })
+    .catch(err => console.log(err));
+  };
+  
+  
+  deleteComment = (commentIdx, _id) => {
+    axios
+    .delete(`${this.state.server}/deleteCardComment/:id`, {params: {id: _id, idx: commentIdx}})
+    .then(result => {
+      this.setState({
+        postData: result.data
+      });
+    })
+    .catch(err => console.log(err));
+  };
+  
+
+  editComment = (post_id, postIdx, commentIdx) => {
+    this.setState({
+      showFlag:{
+          updatePostComment: true
+        },
+        comment: this.state.postData[postIdx].comments[commentIdx],
+        _id: post_id,
+        commentIdx: commentIdx
+      });
+      
     };
-    await axios.delete(`${this.state.server}/deleteCard/${id}`, {
-      params: deleteObj,
-    });
-  };
+    
 
-  ///////////////////
+    updateComment = newComment => {
+        axios
+        .put(`${this.state.server}/updateCardComment/:id`,
+         {params: {id: this.state._id, commentIdx: this.state.commentIdx, newComment: newComment}})
+        .then(result => {
+          this.setState({
+            postData: result.data
+          });
+        })
+        .catch(err => console.log(err));
+    };
 
-  //////////////////////
-  render() {
-    return (
-      <>
-        <div className="d-grid gap-2">
-          <Button
-            variant="light"
-            size="lg"
-            onClick={this.showModal}
-            style={{ margine: "20px" }}
-          >
-            Write a Review!
-          </Button>
 
-          {this.state.citiesData &&
-            this.state.citiesData.map((item, index) => {
-              return (
-                <>
-                  <Card style={{ width: "18rem" }}>
-                    <Card.Img variant="top" src={item.img} />
-                    <Card.Body>
-                      <Card.Title>{item.placeName}</Card.Title>
-                      <Card.Text>{item.userName}</Card.Text>
-                      <Card.Text>{item.comment}</Card.Text>
-                      <button
-                        onClick={() => {
-                          this.deleteBook(index);
-                        }}
-                      >
-                        Delete
-                      </button>
-                    </Card.Body>
-                  </Card>
-                  {/* <MDBRow>
-                    <MDBCol md="6" lg="4">
-                      <MDBCard news className="my-5">
-                        <MDBCardBody>
-                          <div className="content">
-                            <div className="right-side-meta">14 h</div>
-                            <img
-                              src="https://mdbootstrap.com/img/Photos/Avatars/img%20(17)-mini.jpg"
-                              alt=""
-                              className="rounded-circle avatar-img z-depth-1-half"
-                            />
-                            Kate
-                          </div>
-                        </MDBCardBody>
-                        <MDBCardImage
-                          top
-                          src="https://mdbootstrap.com/img/Photos/Others/girl1.jpg"
-                          alt=""
-                        />
-                        <MDBCardBody>
-                          <div className="social-meta">
-                            <p>Another great adventure! </p>
-                            <span>
-                              <MDBIcon far icon="heart" />
-                              25 likes
-                            </span>
-                            <p>
-                              <MDBIcon icon="comment" />
-                              13 comments
-                            </p>
-                          </div>
-                          <hr />
-                          <MDBInput far icon="heart" hint="Add Comment..." />
-                        </MDBCardBody>
-                      </MDBCard>
-                    </MDBCol>
-                  </MDBRow> */}
+    setCommentModalFlag = toShow => {
+      this.setState({
+        showFlags:{
+          updatePostComment  : toShow
+        }
+      });
+    };
+    
 
-                  <CardsModal
-                    addingReviews={this.addingReviews}
-                    closingModal={this.closingModal}
-                    show={this.state.show}
+    render() { 
+      return (
+        <>
+        <button onClick={this.props.showModal}>Add A Post</button>
+        <AddPostModal
+         addingReviews={this.addingReviews}
+         closingModal={this.closeModal}
+         show={this.state.showFlags.addPostFlag}
+            />
+      
+        {this.state.postData.length &&
+        this.state.postData.map((item, idx)=> {
+          return <Post item={item} idx={idx} 
+                  deletePost={this.deletePost} 
+                  updatePost={this.updatePost}
+                  AddComment={this.AddComment}
+                  deleteComment={this.deleteComment}
                   />
-                </>
-              );
-            })}
-        </div>
+        })}
+
+        {this.state.showFlags.updatePostFlag && <UpdatePostModal 
+          cityName={this.state.cityName}
+          cityImg={this.state.cityImg}
+          content={this.state.content}
+          toShow={this.state.showFlags.updatePostFlag}
+          updateUserPost={this.updateUserPost}
+          setUpdateModalFlag={this.setUpdateModalFlag}
+          />}
+
+          {this.state.showFlags.updatePostComment && 
+          <UpdateCommentModal 
+          comment={this.state.content}
+          toShow={this.state.showFlags.updatePostComment}
+          setCommentModalFlag={this.setCommentModalFlag}
+          updateComment={this.updateComment}
+           />}
       </>
-    );
-  }
+     );
+    }
 }
 
 export default Reviews;
