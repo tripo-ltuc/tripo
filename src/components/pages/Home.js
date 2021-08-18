@@ -1,10 +1,10 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../UI/Home.css';
-import { Container, Row, Col, Card } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 import img0 from "../../images/compass.jpg";
 import { Link } from "react-router-dom";
-import { Button, CardBody } from "reactstrap";
+import { Button} from "reactstrap";
 class Home extends React.Component {
   render() {
     return (
@@ -47,14 +47,14 @@ class Home extends React.Component {
             <div style={{background:'light'}} class="cards-list-home">
 
               <div class="card-home 1">
-                <div class="card_image-home"> <img src="https://www.moneycrashers.com/wp-content/uploads/2018/10/travel-world-map-1068x713.jpg" /> </div>
+                <div class="card_image-home"> <img src="https://www.moneycrashers.com/wp-content/uploads/2018/10/travel-world-map-1068x713.jpg" alt="..."/> </div>
                 <div class="card_title-home title-white">
                 </div>
               </div>
 
               <div class="card-home 2">
                 <div class="card_image-home">
-                  <img src="https://i.pinimg.com/564x/ac/81/6e/ac816e3d850c796406278250ee4ce059.jpg" />
+                  <img src="https://i.pinimg.com/564x/ac/81/6e/ac816e3d850c796406278250ee4ce059.jpg" alt="..." />
                 </div>
                 <div class="card_title-home title-white">
                 </div>
@@ -62,7 +62,7 @@ class Home extends React.Component {
 
               <div class="card-home 3">
                 <div class="card_image-home">
-                  <img src="https://prod-virtuoso.dotcmscloud.com/dA/188da7ea-f44f-4b9c-92f9-6a65064021c1/heroImage1/PowerfulReasons_hero.jpg" />
+                  <img src="https://prod-virtuoso.dotcmscloud.com/dA/188da7ea-f44f-4b9c-92f9-6a65064021c1/heroImage1/PowerfulReasons_hero.jpg"alt="..." />
                 </div>
                 <div class="card_title-home">
                 </div>

@@ -3,9 +3,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Form from 'react-bootstrap/Form';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Button from 'react-bootstrap/Button';
-import Row from 'react-bootstrap/FormCheck';
-import Col from 'react-bootstrap/FormCheck';
 import axios from 'axios';
+
+
 import '../UI/Discover.css';
 
 class CityNameForm extends React.Component {

@@ -1,7 +1,7 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Carousel from 'react-bootstrap/Carousel';
-import Card from 'react-bootstrap/Card';
+// import Carousel from 'react-bootstrap/Carousel';
+// import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import TureModal from '../ModalComponents/TureModal';
 import '../UI/Activities.css';

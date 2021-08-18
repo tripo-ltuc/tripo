@@ -3,12 +3,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap';
 import { Link } from "react-router-dom";
 import './Header.css';
-import Avatar from '@material-ui/core/Avatar';
+// import Avatar from '@material-ui/core/Avatar';
 import Logout from './Logout';
-import Reviews from './pages/Reviews';
+// import Reviews from './pages/Reviews';
 import logo from "../images/logo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHome,faUsers,faMap,faPen,faUserCircle } from "@fortawesome/free-solid-svg-icons";
+import { faHome,faUsers,faPen,faUserCircle,faMapSigns } from "@fortawesome/free-solid-svg-icons";
 
 class Header extends React.Component {
   render() {
@@ -20,7 +20,7 @@ class Header extends React.Component {
             <Navbar.Collapse className="me-auto justify-content-end text01">
               
               <Nav.Link href="/" ><Link to="/"><FontAwesomeIcon icon={faHome} fixedWidth /> HOME</Link></Nav.Link>
-              <Nav.Link href="/discover" ><Link to="/discover"><FontAwesomeIcon icon={faMap} fixedWidth/> DISCOVER</Link></Nav.Link>
+              <Nav.Link href="/discover" ><Link to="/discover"><FontAwesomeIcon icon={faMapSigns} fixedWidth/> DISCOVER</Link></Nav.Link>
               <Nav.Link href="/reviews" ><Link to="/reviews"><FontAwesomeIcon icon={faPen} fixedWidth />REVIEWS</Link></Nav.Link>
               <Nav.Link href="/about-us" ><Link to="/about-us"><FontAwesomeIcon icon={faUsers} fixedWidth /> ABOUT US</Link></Nav.Link>
              <NavDropdown title="PROFILE" id="nav-dropdown">

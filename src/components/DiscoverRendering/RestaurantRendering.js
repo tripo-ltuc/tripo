@@ -1,7 +1,7 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Carousel from 'react-bootstrap/Carousel'
-import Card from 'react-bootstrap/Card';
+// import Carousel from 'react-bootstrap/Carousel'
+// import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import RestaurantModal from '../ModalComponents/RestaurantModal';
 import '../UI/discover.scss'
@@ -51,7 +51,6 @@ class RestaurantRendering extends React.Component {
                             return (<>
                                 <>
                                     <div class="card">
-                                        <a href="#">
                                             <img class="card-img-top" src={item.imageUrl} alt={item.name} />
                                             <div class="card-body">
                                                 <h5 class="card-title">{item.name}</h5>
@@ -64,7 +63,6 @@ class RestaurantRendering extends React.Component {
                                                     </div>
                                                 </p>
                                             </div>
-                                        </a>
                                     </div>
 
 

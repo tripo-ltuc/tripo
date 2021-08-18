@@ -1,7 +1,7 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 // import CardGroup from 'react-bootstrap/CardGroup';
-import {Card,Col,Row,Container, CardGroup} from 'react-bootstrap';
+// import {Card,Col,Row,Container, CardGroup} from 'react-bootstrap';
 
 
 
@@ -17,7 +17,7 @@ class WeatherRendering extends React.Component {
                 {console.log(this.props.weatherData.icon)}
                 <div class="col-xl-2 col-md-6 mb-4">
       <div class="card border-3 shadow bg-card">
-      <img src={photo} />
+      <img src={photo} alt="..."/>
         <div class="card-body text-center">
           {/* <h5 class="card-title mb-0">{item.name}</h5> */}
           <div class="card-text text-black-50">
