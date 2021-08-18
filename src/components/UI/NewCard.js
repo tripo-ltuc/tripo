@@ -1,4 +1,5 @@
 import React from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
 import { makeStyles } from "@material-ui/core/styles";
 import clsx from "clsx";
 import Card from "@material-ui/core/Card";
@@ -14,9 +15,21 @@ import { red } from "@material-ui/core/colors";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import ShareIcon from "@material-ui/icons/Share";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import "./NewCard.css";
-
+import Dropdown from "react-bootstrap/Dropdown";
+// import { CardBody, CardTitle, CardText } from "react-bootstrap";
+import {
+  MDBCard,
+  MDBCardImage,
+  MDBCardBody,
+  MDBCardTitle,
+  MDBCardText,
+  MDBCardLink,
+  MDBListGroup,
+  MDBListGroupItem,
+} from "mdb-react-ui-kit";
 import {
   MDBNavbar,
   MDBNavbarNav,
@@ -114,6 +127,12 @@ export default function RecipeReviewCard() {
                 <h1 className="mb-3">Reviews and Comments</h1>
                 {/* <h4 className="mb-3">Subheading</h4> */}
                 <a
+                  onClick={() =>
+                    window.open(
+                      "https://www.booking.com/articles/ultimate-greek-island-holiday-homes.xu.html?aid=309654;label=booking-be-en-emea-8hJZYjb2bR5BkyNu*sMMPAS166197678153:pl:ta:p1:p22,563,000:ac:ap:neg:fi:tikwd-295700342879:lp9069823:li:dec:dm:ppccp=UmFuZG9tSVYkc2RlIyh9YcsZ-Id2vkzIfTmYhvC5HOg;from_articles_widget=1;force_lang=en-us",
+                      "_blank"
+                    )
+                  }
                   className="btn btn-outline-light btn-lg"
                   href="#!"
                   role="button"
@@ -138,9 +157,7 @@ export default function RecipeReviewCard() {
           <Card style={{ width: "18rem" }} className={classes.root}>
             <CardHeader
               avatar={
-                <Avatar aria-label="recipe" className={classes.avatar}>
-                  R
-                </Avatar>
+                <Avatar aria-label="recipe" className={classes.avatar}></Avatar>
               }
               action={
                 <IconButton aria-label="settings">
@@ -215,6 +232,7 @@ export default function RecipeReviewCard() {
             </Collapse>
           </Card>
         </div>
+
         <div className="cardTwo">
           <Card style={{ width: "18rem" }} className={classes.root}>
             <CardHeader
@@ -378,10 +396,81 @@ export default function RecipeReviewCard() {
           </Card>
         </div>
       </div>
-      <div className="colouredTwo">
-        <div className="insideColouredTwo">To Travel Is To Live!</div>
-      </div>
+
+      <div className="colouredTwo">Get inspiration for your next trip</div>
+      <div className="whiteOne"></div>
       {/* <div className="colouredTwo"></div> */}
+      <div className="articlesCards">
+        <a
+          style={{ cursor: "pointer" }}
+          onClick={() =>
+            window.open(
+              "https://www.booking.com/articles/48-hours-in-Tokyo-for-every-traveller.xu.html?aid=309654;label=booking-be-en-emea-8hJZYjb2bR5BkyNu*sMMPAS166197678153:pl:ta:p1:p22,563,000:ac:ap:neg:fi:tikwd-295700342879:lp9069823:li:dec:dm:ppccp=UmFuZG9tSVYkc2RlIyh9YcsZ-Id2vkzIfTmYhvC5HOg;from_articles_widget=1;force_lang=en-us",
+              "_blank"
+            )
+          }
+        >
+          <MDBCard style={{ width: "18rem" }}>
+            <MDBCardImage
+              position="top"
+              alt="..."
+              src="https://lp-cms-production.imgix.net/2021-02/Tokyo%20Main.jpg"
+            />
+          </MDBCard>
+        </a>
+        <a
+          style={{ cursor: "pointer" }}
+          onClick={() =>
+            window.open(
+              "https://www.booking.com/articles/8-ideas-for-an-incredible-solo-trip.xu.html?aid=309654;label=booking-be-en-emea-8hJZYjb2bR5BkyNu*sMMPAS166197678153:pl:ta:p1:p22,563,000:ac:ap:neg:fi:tikwd-295700342879:lp9069823:li:dec:dm:ppccp=UmFuZG9tSVYkc2RlIyh9YcsZ-Id2vkzIfTmYhvC5HOg;force_lang=en-us;from_articles_widget=1",
+              "_blank"
+            )
+          }
+        >
+          <MDBCard style={{ width: "18rem" }}>
+            <MDBCardImage
+              position="top"
+              alt="..."
+              src="https://lp-cms-production.imgix.net/features/2019/05/Solo-Travel-in-Nature-acbfea52bfaf.jpg"
+            />
+          </MDBCard>
+        </a>
+        <a
+          style={{ cursor: "pointer" }}
+          onClick={() =>
+            window.open(
+              "https://www.booking.com/articles/wild-swim-europe-lakes-fjords.xu.html?aid=309654;label=booking-be-en-emea-8hJZYjb2bR5BkyNu*sMMPAS166197678153:pl:ta:p1:p22,563,000:ac:ap:neg:fi:tikwd-295700342879:lp9069823:li:dec:dm:ppccp=UmFuZG9tSVYkc2RlIyh9YcsZ-Id2vkzIfTmYhvC5HOg;from_articles_widget=1;force_lang=en-us",
+              "_blank"
+            )
+          }
+        >
+          <MDBCard style={{ width: "18rem" }}>
+            <MDBCardImage
+              position="top"
+              alt="..."
+              src="https://ecobnb.com/blog/app/uploads/sites/3/2016/05/11710237474_73bf277b27_b-870x490.jpg"
+            />
+          </MDBCard>
+        </a>
+        <a
+          style={{ cursor: "pointer" }}
+          onClick={() =>
+            window.open(
+              "https://www.booking.com/articles/ultimate-greek-island-holiday-homes.xu.html?aid=309654;label=booking-be-en-emea-8hJZYjb2bR5BkyNu*sMMPAS166197678153:pl:ta:p1:p22,563,000:ac:ap:neg:fi:tikwd-295700342879:lp9069823:li:dec:dm:ppccp=UmFuZG9tSVYkc2RlIyh9YcsZ-Id2vkzIfTmYhvC5HOg;from_articles_widget=1;force_lang=en-us",
+              "_blank"
+            )
+          }
+        >
+          <MDBCard style={{ width: "18rem" }}>
+            <MDBCardImage
+              position="top"
+              alt="..."
+              src="https://qtxasset.com/travelagentcentral/1563977225/santorinigreecegetty.jpg/santorinigreecegetty.jpg?4_VNGR7PyCWGM7pBO4jFtHX3S0__TiNE"
+            />
+          </MDBCard>
+        </a>
+      </div>
+      <div className="whiteTwo"></div>
     </>
   );
 }

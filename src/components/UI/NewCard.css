@@ -19,7 +19,7 @@ body {
   background-color: #242323;
   height: 70px;
   margin-top: 50px;
-  color:  white;
+  color: white;
   text-align: center;
   /* width: 100%; */
   display: flex;
@@ -29,48 +29,9 @@ body {
   font-weight: bold;
   /* font-family: "Bebas Neue", serif; */
   font-family: "Open Sans", sans-serif;
-
+  padding: 20px;
+  font-size: 25px;
   /* opacity: 0.5; */
-}
-
-/* .colouredTwo {
-  background-color: rgb(83, 77, 77);
-  height: 70px;
-  margin-top: 50px;
-  color: white;
-  text-align: center;
-} */
-
-/* opacity: 0.5; */
-
-/* .insideColouredOne {
-  background-color: white;
-  height: 50px;
-  width: 100%; */
-  /* margin-top: auto;
-    margin-bottom: auto; */
-  /* text-align: center;
-  margin-top: 10px;
-  color: #bdbe54;
-  font-size: 18px;
-  font-weight: bold;
-  font-family: "Bebas Neue", serif;
-  font-family: "Open Sans", sans-serif;
-} */
-
-.insideColouredTwo {
-  background-color: white;
-  height: 50px;
-  width: 100%;
-  /* margin-top: auto;
-    margin-bottom: auto; */
-  text-align: center;
-  margin-top: 10px;
-  color: #bdbe54;
-  font-size: 18px;
-  font-weight: bold;
-  /* font-family: "Bebas Neue", serif; */
-  font-family: "Open Sans", sans-serif;
 }
 
 .colouredTwo {
@@ -84,9 +45,26 @@ body {
   flex-direction: row;
   justify-content: center;
   /* align-items: center; */
-
-  /* opacity: 0.5; */
+  font-weight: bold;
+  /* font-family: "Bebas Neue", serif; */
+  font-family: "Open Sans", sans-serif;
+  padding: 20px;
+  font-size: 25px;
 }
 body {
   height: 3000px;
+}
+.articlesCards {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+.whiteOne {
+  height: 100px;
+  background-color: white;
+}
+
+.whiteTwo {
+  background-color: white;
+  height: 100px;
 }
