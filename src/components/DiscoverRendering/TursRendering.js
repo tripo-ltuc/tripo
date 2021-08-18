@@ -4,6 +4,7 @@ import Carousel from 'react-bootstrap/Carousel';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import TureModal from '../ModalComponents/TureModal';
+import '../UI/Activities.css';
 
 class TursRendering extends React.Component {
     constructor(props) {
@@ -38,35 +39,53 @@ class TursRendering extends React.Component {
     render() {
 
         return (<>
-        {<h1>Turs</h1>}
-            {this.props.tursData.map((item, idx) => {
+            {<h1 style={{ textAlign: "center" }}>Activities</h1>}
+            <br />
+            <div class="container">
+                <div class="row">
+                    {this.props.tursData.map((item, idx) => {
+                        return (<>
+                            <div class="col-xl-3 col-md-6 mb-4">
+                                <div  class="card border-0 shadow">
+                                    <img style={{ width: "19rem", height: "12rem" }} src={item.picture} class="card-img-top" alt="..." />
+                                    <div class="card-body text-center">
+                                        <h5 class="card-title mb-0">{item.name}</h5>
+                                        <div class="card-text text-black-50">
+                                            <strong>Rating : {item.rating}</strong>
+                                            <br />
+                                            <strong>Price : {item.price}</strong><br/>
+                                            <Button style={{ width: "100%", height: "10%", }} onClick={() => { this.tureModalFun(idx) }}>More...</Button>
+                                        </div>
 
-                return (<>
-                    <Card key={idx} style={{ width: "50rem", height: "35rem", margin: "5%" }}>
+                                    </div>
+                                </div>
+                            </div>
 
-                        <Card.Header style={{ width: "45rem", height: "5rem", margin: "5%" }}>{item.name}</Card.Header>
+
+
+
+                            {/* <Card key={idx} style={{ display: "inline-block"}}>
+                        <Card.Header >{item.name}</Card.Header>
                         <Card.Body>
-                            <img style={{ width: "20rem", height: "15rem" }} src={item.picture} alt={item.name}></img>
+                            <img  src={item.picture} alt={item.name}></img>
                             <blockquote className="blockquote mb-0">
                                 <p>
                                     {' '}
                                     <strong>Rating : {item.rating}</strong>
                                     <br />
                                     <strong>Price : {item.price}</strong>
-
                                 </p>
                                 <footer className="blockquote-footer">
-
                                 </footer>
                             </blockquote>
                         </Card.Body>
-                        <Button onClick={() => { this.tureModalFun(idx) }}>More...</Button>
-                    </Card>
+                        <Button  onClick={() => { this.tureModalFun(idx) }}>More...</Button>
+                    </Card>  */}
 
-                </>)
-            })}
-
-
+                        </>)
+                    })}
+                </div>
+            </div>
 
             {console.log(this.state.tureData)}
             {/* {console.log(this.state.modalShow)} */}
@@ -78,6 +97,24 @@ class TursRendering extends React.Component {
 
 }
 export default TursRendering;
+
+//  <Card key={idx} style={{ display: "inline-block"}}>
+//                         <Card.Header >{item.name}</Card.Header>
+//                         <Card.Body>
+//                             <img style={{ width: "15rem", height: "8rem" }} src={item.picture} alt={item.name}></img>
+//                             <blockquote className="blockquote mb-0">
+//                                 <p>
+//                                     {' '}
+//                                     <strong>Rating : {item.rating}</strong>
+//                                     <br />
+//                                     <strong>Price : {item.price}</strong>
+//                                 </p>
+//                                 <footer className="blockquote-footer">
+//                                 </footer>
+//                             </blockquote>
+//                         </Card.Body>
+//                         <Button  onClick={() => { this.tureModalFun(idx) }}>More...</Button>
+//                     </Card> 
 
 // {/* <div class="container-xl">
 //                 <div class="row">

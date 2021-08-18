@@ -1,7 +1,11 @@
 section .cardProfile{
     height: 700px;
 
-  }  
+  } 
+  
+  body{
+    background-color:  rgb(253, 239, 221);
+   }
 .avatar.card{
   width: 30%;
   height: 50%;
@@ -19,7 +23,7 @@ section .cardProfile{
     transition: all 0.2s;
 }  
 
-.card-header{
+.card-header-profile{
   background-color:#575574 ;
   padding-top: 2%;
   width: 60%;
@@ -31,3 +35,20 @@ section .cardProfile{
   font-size: 22px;
 }
 
+
+.profile-head {
+  transform: translateY(5rem)
+}
+
+.cover-page {
+  background-image: url(https://images.unsplash.com/photo-1530305408560-82d13781b33a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1352&q=80);
+  background-size: cover;
+  background-repeat: no-repeat
+}
+
+.cardProfile {
+  background: #654ea3;
+  background: linear-gradient(to right, #e96443, #904e95);
+  min-height: 100vh;
+  overflow-x: hidden
+}

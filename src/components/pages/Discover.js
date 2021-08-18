@@ -1,9 +1,12 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import '../UI/Discover.css';
 import CardGroup from 'react-bootstrap/CardGroup';
-// import Card from 'react-bootstrap/Card';
+import {Card,Row,Container,Button} from 'react-bootstrap';
 // import Carousel from 'react-bootstrap/Carousel';
 import Col from 'react-bootstrap/FormCheck';
+import { Link } from "react-router-dom";
+
 import axios from 'axios';
 import CityNameForm from '../DiscoverFunctionalities/CityNameForm'
 // import HotelFunctionalities from '../DiscoverFunctionalities/HotelFunctionalities';
@@ -11,12 +14,12 @@ import CityNameForm from '../DiscoverFunctionalities/CityNameForm'
 // import RestaurantFunctionalities from '../DiscoverFunctionalities/RestaurantFunctionalities';
 // import TursFunctionalities from '../DiscoverFunctionalities/TursFunctionalities';
 // import Covid19Functionalities from '../DiscoverFunctionalities/Covid19Functionalities';
-import '../../App.css'
 import WeatherRendering from '../DiscoverRendering/WeatherRendering';
 import HotelDataRendering from '../DiscoverRendering/HotelDataRendering';
 import Covid19Rendaring from '../DiscoverRendering/Covid19Rendaring';
 import TursRendering from '../DiscoverRendering/TursRendering';
 import RestaurantRendering from '../DiscoverRendering/RestaurantRendering';
+// import { Button } from 'bootstrap';
 
 
 class Discover extends React.Component {
@@ -140,40 +143,51 @@ class Discover extends React.Component {
     render() {
         return (
             <>
-            <section className="bg-dark">
                 {/* { console.log(this.state.weatherData)} */}
                 <CityNameForm getCityName={this.getCityName} getWeatherData={this.getWeatherData} getHotelData={this.getHotelData} getCovidData={this.getCovidData} getTursData={this.getTursData} getRestaurantData={this.getRestaurantData} />
-                </section>
+
 
                 {console.log(this.state.covidData)}
 
 
-            {/* {this.state.toRenderAllResults && <Covid19Rendaring covidData={this.state.covidData[0]} />} */}
+                {/* {this.state.toRenderAllResults && <Covid19Rendaring covidData={this.state.covidData[0]} />} */}
 
-                {/* {this.state.toRenderAllResults && <HotelDataRendering hotelsData={this.state.hotelsData} />}
+                {this.state.toRenderAllResults && <HotelDataRendering hotelsData={this.state.hotelsData} />}
 
                 {this.state.toRenderAllResults && <TursRendering tursData={this.state.tursData} />}
 
-                {this.state.toRenderAllResults && <RestaurantRendering restaurantsData={this.state.restaurantsData} />} */}
+                {this.state.toRenderAllResults && <RestaurantRendering restaurantsData={this.state.restaurantsData} />}
 
-                {this.state.toRenderAllResults && <CardGroup>
-                    {this.state.weatherData.map((weatherData, idx) => {
+                {this.state.toRenderAllResults && 
+                <><div className="forcast-bg">
+                <h1 style={{ textAlign: "center", color:'black'}}>Forcast for the next 16 days</h1>
+                <CardGroup>
+                <>
+                <div class="container">
+  <div class="row">
+                <CardGroup>
 
-                        return <>
-                            <Col >
-                                <WeatherRendering weatherData={this.state.weatherData[idx]} />
-                            </Col>
+                        {this.state.weatherData.map((weatherData, idx) => {
+                            return (<>
+                            
+                                    <WeatherRendering weatherData={this.state.weatherData[idx]} />
+                            </>
+                            )
+                        })}
+                        </CardGroup>
+                        </div>
+                        </div>
                         </>
-                    })}
+                        </CardGroup>
+</div>
+                        </>
+                }
+               {this.state.toRenderAllResults &&  <Link to="/reviews"><Button className="btn-discover2" action variant="warning">Leave a Review</Button></Link>}
 
-                </CardGroup>}
 
 
-                
 
-                
 
-                
 
 
 

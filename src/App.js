@@ -39,10 +39,10 @@ render() {
               <Route exact path="/about-us">
                 {this.props.auth0.isAuthenticated && <AboutUs />}
               </Route>
-              <Route exact path="/reviews">
-                {/* {this.props.auth0.isAuthenticated && <Reviews />} */}
+              {/* <Route exact path="/reviews">
+                {this.props.auth0.isAuthenticated && <Reviews />}
                 <Reviews/>
-              </Route>
+              </Route> */}
               <Route exact path="/discover">
                 {this.props.auth0.isAuthenticated && (<Discover/>)}
               </Route>

@@ -17,8 +17,6 @@ class Home extends React.Component {
             {/* <a href="#link" class="button-home" role="button">DISCOVER</a> */}
 
           </div>
-          
-          
           <br/>
           <br/>
           <div className="placeHolder">
@@ -28,11 +26,11 @@ class Home extends React.Component {
                   <img className="imgleft" alt="..." src={img0} style={{ width: '100%', height: '100%', border: '20%', paddingRight: '5%' }} />
 
                 </Col>
-                <Col className="mt-5 justify-content-center">
+                <Col className="mt-5 justify-content-center col-home">
                   <br /><br />
-                  <h3>Tripo</h3>
+                  <h3 className="txt-brief">Tripo</h3>
                   <br />
-                  <h5>
+                  <h5 className="txt-brief">
                   Tripo is a travil web app that provid the user with a lot of infomation about a specific place from the COVID report, Hotels list, places to visit and the Weather forcast. Tripo helps people to become better travelers, from planning to booking to taking a trip. Using the app to discover where to stay, what to do and where to eat based on guidance from those who have been there before. . Also, the user have the ability to create a post card and also like, comment on others post cards from the other users.
                   </h5>
                 </Col>
@@ -41,9 +39,12 @@ class Home extends React.Component {
           </div>
           <br />
           <br />
+          <section>
+            
+          </section>
 
           <>
-            <div class="cards-list-home">
+            <div style={{background:'light'}} class="cards-list-home">
 
               <div class="card-home 1">
                 <div class="card_image-home"> <img src="https://www.moneycrashers.com/wp-content/uploads/2018/10/travel-world-map-1068x713.jpg" /> </div>
