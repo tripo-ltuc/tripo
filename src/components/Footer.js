@@ -13,19 +13,11 @@ import {
 
 const FooterPage = () => {
   return (
+    <section className="footer-side">
     <section bg="dark" variant="dark" className="font-small pt-4 footer-home">
-      {/* <Row className="text-center text-md-left">
-        <Col md="7">
-          <h5 className="title">Footer Content</h5>
-          <p>
-            Here you can use rows and columns here to organize your footer
-            content.
-          </p>
-        </Col>
-        </Row> */}
         <Container>
       <Row className="text-center">
-        <Col>
+        <Col className="title-footer" >
           <h5 className="title">Footer Content</h5>
           <p>
             Don't forget to follow us on our socail media
@@ -52,16 +44,17 @@ const FooterPage = () => {
         </Col>
       </Row>
       </Container>
-
+      <div style={{ borderTop: "2px solid #FFD3B6 ", marginLeft: 30, marginRight: 30 }}>
+      </div>
       <Container>
       <Row className="text-center">
         <Col><div className="footer-copyright text-center py-3">
-          2021 &copy; Copyright: Exporter
+          2021 &copy; Copyright: Exporters
           {/* <a href="https://www.mdbootstrap.com"> MDBootstrap.com </a> */}
         </div></Col>
       </Row>
       </Container>
-    </section>
+    </section></section>
   );
 }
 

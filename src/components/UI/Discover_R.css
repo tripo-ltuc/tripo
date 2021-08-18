@@ -1,0 +1,6 @@
+.discover-bg{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3),rgba(0, 0, 0, 0.3)) , url('https://images.unsplash.com/photo-1522054541898-adc6abd570e5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1934&q=80');
+    background-size: cover;
+    background-position: center;
+    height: 400px;
+}

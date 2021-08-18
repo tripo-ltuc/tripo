@@ -8,10 +8,14 @@ import Footer from "./components/Footer";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import AboutUs from "./components/pages/AboutUs";
+import Discover from "./components/pages/Discover";
 import Reviews from "./components/pages/Reviews";
-
+// import Discover_R from "./components/pages/Discover_R";
 class App extends React.Component {
-  render() {
+  
+
+render() {
+
     return (
       <>
         <section>
@@ -26,7 +30,6 @@ class App extends React.Component {
               <Route exact path="/profile">
                 {this.props.auth0.isAuthenticated && <Profile />}
               </Route>
-              <Route exact path="/postCards"></Route>
               <Route exact path="/about-us">
                 {this.props.auth0.isAuthenticated && <AboutUs />}
               </Route>
@@ -34,10 +37,14 @@ class App extends React.Component {
                 {this.props.auth0.isAuthenticated && <Reviews />}
               </Route>
               <Route exact path="/about-us">
-                {this.props.auth0.isAuthenticated && (<AboutUs/>)}
+                {this.props.auth0.isAuthenticated && <AboutUs />}
               </Route>
-              <Route exact path="/reviews">
-                {this.props.auth0.isAuthenticated && (<Reviews/>)}
+              {/* <Route exact path="/reviews">
+                {this.props.auth0.isAuthenticated && <Reviews />}
+                <Reviews/>
+              </Route> */}
+              <Route exact path="/discover">
+                {this.props.auth0.isAuthenticated && (<Discover/>)}
               </Route>
               
             </Switch>
