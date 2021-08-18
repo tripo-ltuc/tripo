@@ -20,10 +20,14 @@ section .cardProfile{
 }  
 
 .card-header{
-  border-radius: 30%;
   background-color:#575574 ;
+  padding-top: 2%;
+  width: 60%;
+  margin-left: 20%;
+
 }
 
 .txtCard{
   font-size: 22px;
 }
+

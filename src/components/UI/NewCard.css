@@ -1,0 +1,92 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap");
+
+.customizedCards {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-top: 60px;
+
+  /* background-color: rgb(224, 202, 202); */
+}
+
+body {
+  background-color: white;
+}
+
+.colouredOne {
+  background-color: #242323;
+  height: 70px;
+  margin-top: 50px;
+  color:  white;
+  text-align: center;
+  /* width: 100%; */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  /* align-items: center; */
+  font-weight: bold;
+  /* font-family: "Bebas Neue", serif; */
+  font-family: "Open Sans", sans-serif;
+
+  /* opacity: 0.5; */
+}
+
+/* .colouredTwo {
+  background-color: rgb(83, 77, 77);
+  height: 70px;
+  margin-top: 50px;
+  color: white;
+  text-align: center;
+} */
+
+/* opacity: 0.5; */
+
+/* .insideColouredOne {
+  background-color: white;
+  height: 50px;
+  width: 100%; */
+  /* margin-top: auto;
+    margin-bottom: auto; */
+  /* text-align: center;
+  margin-top: 10px;
+  color: #bdbe54;
+  font-size: 18px;
+  font-weight: bold;
+  font-family: "Bebas Neue", serif;
+  font-family: "Open Sans", sans-serif;
+} */
+
+.insideColouredTwo {
+  background-color: white;
+  height: 50px;
+  width: 100%;
+  /* margin-top: auto;
+    margin-bottom: auto; */
+  text-align: center;
+  margin-top: 10px;
+  color: #bdbe54;
+  font-size: 18px;
+  font-weight: bold;
+  /* font-family: "Bebas Neue", serif; */
+  font-family: "Open Sans", sans-serif;
+}
+
+.colouredTwo {
+  background-color: #242323;
+  height: 70px;
+  margin-top: 50px;
+  color: white;
+  text-align: center;
+  /* width: 100%; */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  /* align-items: center; */
+
+  /* opacity: 0.5; */
+}
+body {
+  height: 3000px;
+}

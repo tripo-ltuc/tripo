@@ -5,6 +5,7 @@ import Styling from "./Styling";
 
 import Card from "react-bootstrap/Card";
 import CardsModal from "../UI/CardsModal";
+import NewCard from "../UI/NewCard";
 
 // import Button from "react-bootstrap/Button";
 // import ModalForm from "./component/ModalForm";
@@ -106,12 +107,13 @@ class Reviews extends React.Component {
         >
           Add a Review
         </Button> */}
-        <Styling
+        {/* <Styling
           citiesData={this.state.citiesData}
           showModal={this.showModal}
           show={this.state.show}
-        />
-        <div>
+        /> */}
+        <NewCard />
+        {/* <div>
           {this.state.citiesData &&
             this.state.citiesData.map((item, index) => {
               return (
@@ -127,7 +129,7 @@ class Reviews extends React.Component {
                 </>
               );
             })}
-        </div>
+        </div> */}
         <CardsModal
           addingReviews={this.addingReviews}
           closingModal={this.closingModal}
