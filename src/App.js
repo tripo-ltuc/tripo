@@ -2,15 +2,22 @@ import React from "react";
 import { withAuth0 } from "@auth0/auth0-react";
 import Home from "./components/pages/Home";
 import Login from "./components/Login";
-import Header from "./components/Header";
 import Profile from "./components/Profile";
-import Footer from "./components/Footer";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import AboutUs from "./components/pages/AboutUs";
 import Reviews from "./components/pages/Reviews";
+import Discover from "./components/pages/Discover";
+// import Header from "./components/Header";
+// import Footer from "./components/Footer";
 
 class App extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      cityName: '',
+    }
+  };
   render() {
     return (
       <>
