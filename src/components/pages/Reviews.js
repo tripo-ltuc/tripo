@@ -1,12 +1,13 @@
 import React from "react";
 import axios from "axios";
 import AddPostModal from "../UI/ReviewUI/AddPostModal";
-import Post from "../UI/ReviewUI/Post";
+import Post from "../UI/ReviewUI/Post.js";
 import UpdatePostModal from "../UI/ReviewUI/UpdatePostModal";
 import UpdateCommentModal from "../UI/ReviewUI/UpdateCommentModal";
 import { withAuth0 } from "@auth0/auth0-react";
 import "../UI/ReviewUI/Styles/reviewPage.css"
 import ReviewHeader from "../UI/ReviewUI/ReviewHeader";
+
 class Reviews extends React.Component {
   constructor(props) {
     super(props);
@@ -30,6 +31,9 @@ class Reviews extends React.Component {
 
   componentDidMount = () => {
     // const { user } = this.props.auth0;
+    this.setState({
+      cityName: this.props.getCityName,
+    })
     const endPoint = this.state.cityName === 'all' ? 'getAllCards' : 'getCityCards';
     axios
     .get(`${this.state.server}/${endPoint}`, {params: {cityName: this.state.cityName}})

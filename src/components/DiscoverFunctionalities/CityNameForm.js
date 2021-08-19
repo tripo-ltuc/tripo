@@ -3,9 +3,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Form from 'react-bootstrap/Form';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Button from 'react-bootstrap/Button';
-import Row from 'react-bootstrap/FormCheck';
-import Col from 'react-bootstrap/FormCheck';
 import axios from 'axios';
+
+
 import '../UI/Discover.css';
 
 class CityNameForm extends React.Component {
@@ -23,9 +23,12 @@ class CityNameForm extends React.Component {
     submitHandler = (event) =>{
         event.preventDefault();
         let CN =event.target.CityName.value;
+        this.props.setCityName(CN);
         this.setState({
             name : CN
-        });
+        }
+        
+        );
         // console.log(this.state.name);
 //=============================== getting lat , lon from LocationIQ API====================================//
         axios

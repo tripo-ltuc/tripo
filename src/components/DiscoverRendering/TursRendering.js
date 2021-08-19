@@ -1,7 +1,7 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Carousel from 'react-bootstrap/Carousel';
-import Card from 'react-bootstrap/Card';
+// import Carousel from 'react-bootstrap/Carousel';
+// import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import TureModal from '../ModalComponents/TureModal';
 import '../UI/Activities.css';
@@ -38,7 +38,7 @@ class TursRendering extends React.Component {
     }
     render() {
 
-        return (<>
+        return (<><div className="bg-activities">
             {<h1 style={{ textAlign: "center" }}>Activities</h1>}
             <br />
             <div class="container">
@@ -54,14 +54,14 @@ class TursRendering extends React.Component {
                                             <strong>Rating : {item.rating}</strong>
                                             <br />
                                             <strong>Price : {item.price}</strong><br/>
-                                            <Button style={{ width: "100%", height: "10%", }} onClick={() => { this.tureModalFun(idx) }}>More...</Button>
+                                            <Button variant="warning" style={{ width: "100%", height: "10%", }} taget='_blank' onClick={() => { this.tureModalFun(idx) }}>More...</Button>
                                         </div>
 
                                     </div>
                                 </div>
                             </div>
 
-
+                            
 
 
                             {/* <Card key={idx} style={{ display: "inline-block"}}>
@@ -86,7 +86,7 @@ class TursRendering extends React.Component {
                     })}
                 </div>
             </div>
-
+</div>
             {console.log(this.state.tureData)}
             {/* {console.log(this.state.modalShow)} */}
             <TureModal tureData={this.state.tureData} modalShow={this.state.modalShow} handleClose={this.handleClose} />

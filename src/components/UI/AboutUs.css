@@ -9,8 +9,8 @@
   } */
   
   body .about-us{
-    background: rgb(255, 234, 234);
-  }
+    background-image:linear-gradient(#bbdade,#BBDED6);
+    }
   .our-team {
     padding: 30px 0 40px;
     margin-bottom: 30px;

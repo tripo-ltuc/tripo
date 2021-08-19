@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { withAuth0 } from '@auth0/auth0-react';
-import { Card,Col,Container,Row } from 'react-bootstrap';
+// import { Card,Col,Container,Row } from 'react-bootstrap';
 import './Profile.css';
 
 
@@ -12,27 +12,13 @@ class Profile extends Component {
             <section className="cardProfile">
                     {isAuthenticated &&
                         <>
-                            {/* <Card className="w-50 avatar">
-                                <Card.Header className="card-header-profile" ><h3>User Profile Information</h3></Card.Header>
-                                <Card.Body>
-                                    <Card.Img src={user.picture} alt={user.name} className="rounded-circle" style={{ height: '10rem', width: '10rem' }} />
-                                    <Card.Body className="d-flex flex-column justify-content-center align-items-start text-center">
-                                    <Container>
-                                    <Row className="text-center txtCard">
-                                    <Col>Name: <br/> {user.name}</Col>
-                                    <Col >Email:<br/> {user.email}</Col>
-                                    </Row>
-                                    </Container>
-                                    </Card.Body>
-                                </Card.Body>
-                            </Card> */}
                             <div className="cover-page">
                             <div class="row py-5 px-4">
     <div class="col-md-5 mx-auto">
         <div class="bg-white shadow rounded overflow-hidden">
             <div class="px-4 pt-0 pb-4 cover-page">
                 <div class="media align-items-end profile-head">
-                    <div class="profile mr-3"><img  src={user.picture} alt="..." width="130" class="rounded mb-2 img-thumbnail"/><a href="#" class="btn btn-outline-dark btn-sm btn-block">Edit profile</a></div>
+                    <div class="profile mr-3"><img  src={user.picture} alt="..." width="130" class="rounded mb-2 img-thumbnail"/></div>
                     <div class="media-body mb-5 text-white">
                         <h4 class="mt-0 mb-0">{user.name}</h4>
                         <p class="small mb-4"> <i class="fas fa-map-marker-alt mr-2">{user.email}</i></p>
@@ -62,7 +48,7 @@ class Profile extends Component {
             </div>
             <div class="py-4 px-4">
                 <div class="d-flex align-items-center justify-content-between mb-3">
-                    <h5 class="mb-0">Recent photos</h5><a href="#" class="btn btn-link text-muted">Show all</a>
+                    <h5 class="mb-0">Recent photos</h5><a href="https://unsplash.com/" class="btn btn-link text-muted">Show all</a>
                 </div>
                 <div class="row">
                     <div class="col-lg-6 mb-2 pr-lg-1"><img src="https://images.unsplash.com/photo-1469594292607-7bd90f8d3ba4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80" alt="" class="img-fluid rounded shadow-sm"/></div>
