@@ -1,22 +1,5 @@
-<<<<<<< HEAD
-@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital@0;1&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Fira+Sans&family=Prompt&display=swap');
-
-.container{
-    padding: 3rem 0;
-}
-.card{
-    width: 60rem;
-    border-radius: 3px;
-    margin: 10rem auto;
-}
-
-.main-body{
-=======
 .card-post{
     background-color: rgb(255, 255, 234);
->>>>>>> 5187809bc7a7bec4a831806b79e55aa16859baf9
     display: flex;
     /* margin-left: 10%; */
     margin: 2% 0 2% 12%;
@@ -27,101 +10,7 @@
     float: right;
 }
 
-<<<<<<< HEAD
-.title-body{
-    display: flex;
-    align-items: center;
-}
-
-.city-name{
-    font-family: 'Fira Sans', sans-serif;
-    padding: 0.5rem;
-    background-color: #74747436;
-    border-radius: 5px;
-}
-
-.post-content{
-    font-family: 'Prompt', sans-serif;
-    margin-top: 0.7rem;
-    font-size: 1.2rem;
-    line-height: 1.2;
-}
-
-.user-name{
-    font-family: 'Merriweather', serif;
-    font-size: 1.3rem;
-    color: #3d3d3de1;
-    text-transform: capitalize;
-}
-
-.user-img{
-    border-radius: 50%;
-    width: 7rem;
-    height: auto;
-    margin-right: 1rem;
-}
-
-.post-control-container{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 3rem;
-    width: 100%
-}
-
-.controls-body{
-    display: flex;
-    justify-content: flex-end;
-}
-
-.btn{
-    padding: 0.7rem 1.3rem;
-    font-size: 0.9;
-    margin: 0 0.5rem;
-    box-shadow: none;
-    border-radius: 5px;
-    border: 2px solid transparent;
-}
-
-.btn:focus{
-    outline: none;
-}
-
-.btn--delete{
-    background-color: #ac1414;
-}
-
-
-.btn--delete:hover,
-.btn--delete:focus{
-    color: #ac1414;
-    background-color: #fff;
-    border: 2px solid #ac1414; 
-}
-
-.btn--update{
-    background-color: #1183b8;
-    color: #fff;
-    border: 2px solid transparent
-}
-
-.btn--update:hover
-.btn--update:focus{
-    color: #1183b8;
-    background-color: #fff;
-    border: 2px solid #1183b8;
-}
-
-/* .comment-text{
-    height: 60rem;
-} */
-
-.form-btn{
-    width: 15%;
-    align-self: flex-start;
-=======
 .contentReview{
     background: whitesmoke;
     font-size: 20px;
->>>>>>> 5187809bc7a7bec4a831806b79e55aa16859baf9
 }
