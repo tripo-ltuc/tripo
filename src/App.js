@@ -12,9 +12,23 @@ import Header from "./components/Header"
 import Footer from "./components/Footer"
 // import Discover_R from "./components/pages/Discover_R";
 class App extends React.Component {
-  
+  constructor(props){
+    super(props);
+    this.state={
+      cityName: '',
+    }
 
+  }
+  setCityName = cityName =>{
+    this.setState({
+      cityName:cityName,
+    })
+  };
+  getCityName =()=>{
+    return this.state.cityName;
+  }
 render() {
+
 
     return (
       <>
@@ -34,7 +48,7 @@ render() {
                 {this.props.auth0.isAuthenticated && <AboutUs />}
               </Route>
               <Route exact path="/reviews">
-                {this.props.auth0.isAuthenticated && <Reviews />}
+                {this.props.auth0.isAuthenticated && <Reviews getCityName={this.getCityName} />}
               </Route>
               <Route exact path="/about-us">
                 {this.props.auth0.isAuthenticated && <AboutUs />}
@@ -44,7 +58,7 @@ render() {
                 <Reviews/>
               </Route> */}
               <Route exact path="/discover">
-                {this.props.auth0.isAuthenticated && (<Discover/>)}
+                {this.props.auth0.isAuthenticated && (<Discover setCityName={this.setCityName}/>)}
               </Route>
               
             </Switch>

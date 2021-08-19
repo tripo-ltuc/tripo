@@ -34,7 +34,7 @@ class AboutUs extends React.Component {
         <ul class="social">
           <li><a href="#" class="fa fa-facebook" aria-hidden="true"></a></li>
           <li><a href="#" class="fa fa-twitter" aria-hidden="true"></a></li>
-          <li><a href="#" class="fa fa-google-plus" aria-hidden="true"></a></li>
+          <li><a href="#" class="fa fa-github" aria-hidden="true"></a></li>
           <li><a href="#" class="fa fa-linkedin" aria-hidden="true"></a></li>
         </ul>
       </div>
@@ -50,10 +50,10 @@ class AboutUs extends React.Component {
           <p>Holding a bachelor degree in Electrical and Communication engineering from German Jordanian University</p>
         </div>
         <ul class="social">
-        <li><a href="https://web.facebook.com/?_rdc=1&_rdr" class="fa fa-facebook" aria-hidden="true"></a></li>
+        <li><a href="https://web.facebook.com/rahaf.aljazzazi" class="fa fa-facebook" aria-hidden="true"></a></li>
           <li><a href="#" class="fa fa-twitter" aria-hidden="true"></a></li>
-          <li><a href="#" class="fa fa-google-plus" aria-hidden="true"></a></li>
-          <li><a href="#" class="fa fa-linkedin" aria-hidden="true"></a></li>
+          <li><a href="https://github.com/RahafJ96" class="fa fa-github" aria-hidden="true"></a></li>
+          <li><a href="https://www.linkedin.com/in/rahaf-al-jazzazi-28635111a/" class="fa fa-linkedin" aria-hidden="true"></a></li>
         </ul>
       </div>
     </div>
@@ -71,8 +71,8 @@ class AboutUs extends React.Component {
         <ul class="social">
         <li><a href="https://web.facebook.com/?_rdc=1&_rdr" class="fa fa-facebook" aria-hidden="true"></a></li>
           <li><a href="#" class="fa fa-twitter" aria-hidden="true"></a></li>
-          <li><a href="#" class="fa fa-google-plus" aria-hidden="true"></a></li>
-          <li><a href="#" class="fa fa-linkedin" aria-hidden="true"></a></li>
+          <li><a href="https://github.com/TareqZeadeh" class="fa fa-github" aria-hidden="true"></a></li>
+          <li><a href="https://www.linkedin.com/in/tareqhasan173/" class="fa fa-linkedin" aria-hidden="true"></a></li>
         </ul>
       </div>
     </div>
@@ -94,7 +94,7 @@ class AboutUs extends React.Component {
         <ul class="social">
         <li><a  class="fa fa-facebook"  aria-hidden="true"></a></li>
           <li><a class="fa fa-twitter"  aria-hidden="true"></a></li>
-          <li><a class="fa fa-google-plus"  aria-hidden="true"></a></li>
+          <li><a class="fa fa-github"  aria-hidden="true"></a></li>
           <li><a class="fa fa-linkedin" aria-hidden="true"></a></li>
         </ul>
       </div>
@@ -113,7 +113,7 @@ class AboutUs extends React.Component {
         <ul class="social">
         <li><a href="#" class="fa fa-facebook" aria-hidden="true"></a></li>
           <li><a href="#" class="fa fa-twitter" aria-hidden="true"></a></li>
-          <li><a href="#" class="fa fa-google-plus" aria-hidden="true"></a></li>
+          <li><a href="#" class="fa fa-github" aria-hidden="true"></a></li>
           <li><a href="#" class="fa fa-linkedin" aria-hidden="true"></a></li>
         </ul>
       </div>

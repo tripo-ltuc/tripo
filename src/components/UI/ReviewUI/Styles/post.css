@@ -1,22 +1,16 @@
-.card{
-    width: 50rem;
-    border-radius: 3px;
-    margin-left: 1rem;
+.card-post{
+    background-color: rgb(255, 255, 234);
+    display: flex;
+    /* margin-left: 10%; */
+    margin: 2% 0 2% 12%;
+    border-radius: 5%;
 }
 
-.main-body{
-    display: flex;
-    flex-direction: column;
+.cardCity{
+    float: right;
 }
 
-.card-title{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.title-body{
-    display: flex;
-    align-items: center;
-    /* justify-content:  */
+.contentReview{
+    background: whitesmoke;
+    font-size: 20px;
 }

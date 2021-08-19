@@ -14,8 +14,7 @@ import HotelDataRendering from '../DiscoverRendering/HotelDataRendering';
 import Covid19Rendaring from '../DiscoverRendering/Covid19Rendaring';
 import TursRendering from '../DiscoverRendering/TursRendering';
 import RestaurantRendering from '../DiscoverRendering/RestaurantRendering';
-// import { Button } from 'bootstrap';
-
+import '../UI/home.scss';
 
 class Discover extends React.Component {
 
@@ -40,7 +39,7 @@ class Discover extends React.Component {
             cityName: city,
             latitude: lat,
             longitude: lon,
-            toRenderAllResults: flag
+            toRenderAllResults: flag,
         });
 
     }
@@ -139,7 +138,7 @@ class Discover extends React.Component {
         return (
             <>
                 {/* { console.log(this.state.weatherData)} */}
-                <CityNameForm getCityName={this.getCityName} getWeatherData={this.getWeatherData} getHotelData={this.getHotelData} getCovidData={this.getCovidData} getTursData={this.getTursData} getRestaurantData={this.getRestaurantData} />
+                <CityNameForm setCityName={this.props.setCityName} getCityName={this.getCityName} getWeatherData={this.getWeatherData} getHotelData={this.getHotelData} getCovidData={this.getCovidData} getTursData={this.getTursData} getRestaurantData={this.getRestaurantData} />
 
 
                 {console.log(this.state.covidData)}

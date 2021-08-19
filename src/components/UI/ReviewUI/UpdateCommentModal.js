@@ -39,7 +39,7 @@ class UpdateCommentModal extends Component{
                                     defaultValue={this.props.comment}
                                     />
                                 </FloatingLabel>
-                                <Button type="submit">Update</Button>
+                                <Button variant="success" type="submit">Update</Button>
                             </Form>
                         </Modal.Body>
                         <Modal.Footer>

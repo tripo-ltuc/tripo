@@ -23,9 +23,12 @@ class CityNameForm extends React.Component {
     submitHandler = (event) =>{
         event.preventDefault();
         let CN =event.target.CityName.value;
+        this.props.setCityName(CN);
         this.setState({
             name : CN
-        });
+        }
+        
+        );
         // console.log(this.state.name);
 //=============================== getting lat , lon from LocationIQ API====================================//
         axios
