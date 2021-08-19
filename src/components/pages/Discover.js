@@ -2,25 +2,19 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../UI/Discover.css';
 import CardGroup from 'react-bootstrap/CardGroup';
-import {Card,Row,Container,Button} from 'react-bootstrap';
+import {Button} from 'react-bootstrap';
 // import Carousel from 'react-bootstrap/Carousel';
-import Col from 'react-bootstrap/FormCheck';
+// import Col from 'react-bootstrap/FormCheck';
 import { Link } from "react-router-dom";
-
 import axios from 'axios';
 import CityNameForm from '../DiscoverFunctionalities/CityNameForm'
-// import HotelFunctionalities from '../DiscoverFunctionalities/HotelFunctionalities';
-// import WeatherFunctionalities from '../DiscoverFunctionalities/WeatherFunctionalities';
-// import RestaurantFunctionalities from '../DiscoverFunctionalities/RestaurantFunctionalities';
-// import TursFunctionalities from '../DiscoverFunctionalities/TursFunctionalities';
-// import Covid19Functionalities from '../DiscoverFunctionalities/Covid19Functionalities';
+// import { faHome,faUsers,faMap,faPen,faUserCircle,faEdit,faHeart,faSearch } from "@fortawesome/free-solid-svg-icons";
 import WeatherRendering from '../DiscoverRendering/WeatherRendering';
 import HotelDataRendering from '../DiscoverRendering/HotelDataRendering';
 import Covid19Rendaring from '../DiscoverRendering/Covid19Rendaring';
 import TursRendering from '../DiscoverRendering/TursRendering';
 import RestaurantRendering from '../DiscoverRendering/RestaurantRendering';
-// import { Button } from 'bootstrap';
-
+import '../UI/home.scss';
 
 class Discover extends React.Component {
 
@@ -45,7 +39,7 @@ class Discover extends React.Component {
             cityName: city,
             latitude: lat,
             longitude: lon,
-            toRenderAllResults: flag
+            toRenderAllResults: flag,
         });
 
     }
@@ -144,13 +138,13 @@ class Discover extends React.Component {
         return (
             <>
                 {/* { console.log(this.state.weatherData)} */}
-                <CityNameForm getCityName={this.getCityName} getWeatherData={this.getWeatherData} getHotelData={this.getHotelData} getCovidData={this.getCovidData} getTursData={this.getTursData} getRestaurantData={this.getRestaurantData} />
+                <CityNameForm setCityName={this.props.setCityName} getCityName={this.getCityName} getWeatherData={this.getWeatherData} getHotelData={this.getHotelData} getCovidData={this.getCovidData} getTursData={this.getTursData} getRestaurantData={this.getRestaurantData} />
 
 
                 {console.log(this.state.covidData)}
 
 
-                {/* {this.state.toRenderAllResults && <Covid19Rendaring covidData={this.state.covidData[0]} />} */}
+                {this.state.covidData.length && <Covid19Rendaring covidData={this.state.covidData[0]} />}
 
                 {this.state.toRenderAllResults && <HotelDataRendering hotelsData={this.state.hotelsData} />}
 

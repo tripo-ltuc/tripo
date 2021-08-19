@@ -1,6 +1,6 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Modal,Row,Col,Container} from 'react-bootstrap';
+import {Modal,Row,Col} from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 
 class TureModal extends React.Component {

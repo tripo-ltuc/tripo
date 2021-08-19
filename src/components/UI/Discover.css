@@ -4,19 +4,29 @@
 	background-position:center;
 	background-size: cover;
 	margin: 0;
+	font-family: 'Ubuntu Condensed', sans-serif;
+
 }
 .btn-discover2{
 	margin-left: 45%;
 	margin-top: 2%;
+	font-family: 'Ubuntu Condensed', sans-serif;
+
 }
 .bg-hotel{
 	background: #CDF0EA;
+	font-family: 'Ubuntu Condensed', sans-serif;
+
 }
 .resturant-bg{
 	background: #FDF6F0;
+	font-family: 'Ubuntu Condensed', sans-serif;
+
 }
 .forcast-bg{
 	background: #fff8ad;
+	font-family: 'Ubuntu Condensed', sans-serif;
+
 }
 .bg-card{
 	background: #f7feff;
@@ -25,6 +35,9 @@
 	padding-top: 10%;
 	width: 100%;
 	height: 30%;
+}
+.bg-activites{
+	font-family: 'Ubuntu Condensed', sans-serif;
 }
 .btn-discover{
 	background-color:#5991a7;

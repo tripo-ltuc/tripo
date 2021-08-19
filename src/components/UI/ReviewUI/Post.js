@@ -1,11 +1,12 @@
 import { Component } from "react";
-import { Button, Card } from "react-bootstrap";
+import { Button, Card,Row,Col } from "react-bootstrap";
 import { withAuth0 } from "@auth0/auth0-react";
 import { Form, FloatingLabel } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Styles/post.css';
 import Comment from "./Comment";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash,faEdit,faPen,faUserCircle,faMapSigns, faCommentDots } from "@fortawesome/free-solid-svg-icons";
 
 class Post extends Component{
 
@@ -26,30 +27,39 @@ class Post extends Component{
         const {user} = this.props.auth0;
         return(
             <>
-                <Card className="card">
+                <Card className="w-75 card-post" >
                     <Card.Body className="main-body">
-                        <Card.Title className="card-title">
+                        <Row>
+                           
+                            <Col>
+                            <Card.Title className="card-title">
                             <Card.Body className="title-body">
-                                <Card.Img className="mx-2 rounded-circle" style={{width: '5rem'}} src={this.props.item.userImg} alt="userImg"/>
-                                <Card.Text>{this.props.item.userName}</Card.Text>
+                                <Card.Img className="mx-2 rounded-circle" style={{width: '7rem'}} src={this.props.item.userImg} alt="userImg"/>
+                                <Card.Text><h3><strong>{this.props.item.userName}</strong></h3></Card.Text>
                             </Card.Body>
-                            <Card.Title className="mr-2">{this.props.item.cityName}</Card.Title>
+                            <Card.Title className="cardCity">{this.props.item.cityName}</Card.Title>
                         </Card.Title>
-                        <Card.Body>
-                            <Card.Img src={this.props.item.cityImg}/>
-                            <Card.Text>{this.props.item.content}</Card.Text>
+                        <br/>
+                        <hr/>
+                        <Card.Body className='contentReview'>
+                            <Card.Text >{this.props.item.content}</Card.Text>
                         </Card.Body>
                         <Card.Body className="d-flex">
                             <i class="fas fa-heart mx-2"></i>{this.props.item.likes}
                         </Card.Body>
+                            </Col>
+                            <Col>
+                            <Card.Img style={{width:'30rem',height:'30rem',borderRadius:'5%', margin:'2%'}} src={this.props.item.cityImg}/>
+                            </Col>
+                        </Row>
+                       
                         <Card.Footer>
                             {user.email === this.props.item.userEmail
                             && <Card.Body>
-                                <Button onClick={() => this.props.deletePost(this.props.item._id)}
-                                >Delete</Button>
-                                
-                                <Button onClick={() => this.props.updatePost(this.props.item._id, this.props.idx)}
-                                >Edit</Button>
+                                <Button variant="danger" style={{marginRight:'1%'}} onClick={() => this.props.deletePost(this.props.item._id)}
+                                ><FontAwesomeIcon icon={faTrash} fixedWidth /></Button>
+                                <Button variant="success" onClick={() => this.props.updatePost(this.props.item._id, this.props.idx)}
+                                ><FontAwesomeIcon icon={faEdit} fixedWidth /></Button>
                             </Card.Body>}
                             <Card.Body>
                                 <Form onSubmit={(event) => this.commentHandler(event, this.props.item._id)}>
@@ -61,13 +71,13 @@ class Post extends Component{
                                         name="userComment"
                                         />
                                     </FloatingLabel>
-                                    <Button type="submit">Add Comment</Button>
+                                    <Button type="submit" style={{marginTop:'10px', marginLeft:'85%'}}><FontAwesomeIcon icon={faCommentDots} fixedWidth /> Add Comment</Button>
                                 </Form>
                             </Card.Body>
-                            {this.props.item.comments.length
+                            {this.props.item.comments.length !==0
                             && <Card.Body 
                             className="d-flex flex-column">
-                                    {this.props.item.comments.length
+                                    {this.props.item.comments.length !==0
                                      &&this.props.item.comments.map((comment, idx) => {
                                         
                                         return <Comment 

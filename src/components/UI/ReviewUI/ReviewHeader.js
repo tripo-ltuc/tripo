@@ -1,5 +1,6 @@
 import { Component } from "react";
 
+
 class ReviewHeader extends Component{
     render(){
         return(
@@ -10,7 +11,7 @@ class ReviewHeader extends Component{
           style={{
             backgroundImage:
               "url('https://www.letstefl.com/wp-content/uploads/2018/09/map-backgrounds.jpg')",
-            height: 400,
+            height: 500,
           }}
         >
           <br />
@@ -24,13 +25,14 @@ class ReviewHeader extends Component{
             <div className="d-flex justify-content-center align-items-center h-100">
               <div className="text-white">
                 <br />
-                <h1 className="mb-3">Reviews and Comments</h1>
+                <h1 className="mb-3" style={{fontSize:'60px' }}>Reviews and Comments</h1>
                 {/* <h4 className="mb-3">Subheading</h4> */}
                 <a
                   onClick={this.props.showModal}
-                  className="btn btn-outline-light btn-lg"
+                  className="btn btn-warning btn-lg btn-review"
                   href="#!"
                   role="button"
+                  style={{fontSize:'30px' }}
                 >
                   Add Your Review!
                 </a>

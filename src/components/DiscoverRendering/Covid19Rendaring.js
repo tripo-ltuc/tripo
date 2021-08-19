@@ -1,6 +1,8 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Card from 'react-bootstrap/Card';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faProcedures,faBookDead,faVirus,faVirusSlash,faCalendarDay,faExclamationTriangle } from "@fortawesome/free-solid-svg-icons";
 
 
 class Covid19Rendaring extends React.Component {
@@ -10,31 +12,32 @@ class Covid19Rendaring extends React.Component {
 
     render() {
         return (<>
-        <Card style={{ width: "50rem", height: "30rem", margin: "5%" }}>
-            
-                <Card.Header style={{ width: "45rem", height: "3rem", margin: "5%" }}>{this.props.covidData.country} ({this.props.covidData.code})</Card.Header>
-                <Card.Body>
+        <div style={{margin:'3rem 0 3rem 20rem', width:'75%',color:'#40514E' }}>
+        <Card className="w-75 card-covid"style={{backgroundColor:'#ffc6b9'}}>
+            <h1 style={{color:'#4D4545', textAlign:'center'}}>Covid Situation</h1>
+                <Card.Body style={{fontSize:'1.5rem'}}><strong>{this.props.covidData.country} ({this.props.covidData.code})</strong></Card.Body>
+                <Card.Body style={{color:'#40514E'}}>
                     <blockquote className="blockquote mb-0">
                         <p>
-                            {' '}
-                            Confirmed Cases : {this.props.covidData.confirmed}
+                            <strong>Confirmed Cases : </strong><FontAwesomeIcon icon={faVirus} fixedWidth />{this.props.covidData.confirmed}
                             <br/>
-                            Recovered Cases : {this.props.covidData.recovered}
+                            <strong>Recovered Cases :</strong><FontAwesomeIcon icon={faVirusSlash} fixedWidth /> {this.props.covidData.recovered}
                             <br/>
-                            Critical Cases  : {this.props.covidData.critical}
+                            <strong>Critical Cases  :</strong> <FontAwesomeIcon icon={faProcedures} fixedWidth /> {this.props.covidData.critical}
                             <br/>
-                            Deaths          : {this.props.covidData.deaths}
+                            <strong>Deaths          :</strong> <FontAwesomeIcon icon={faBookDead} fixedWidth /> {this.props.covidData.deaths}
                             <br/>
-                            LastUpdate      : {this.props.covidData.lastUpdate}
+                            <strong>LastUpdate      :</strong><FontAwesomeIcon icon={faCalendarDay} fixedWidth /> {this.props.covidData.lastUpdate}
                         </p>
-                        <footer className="blockquote-footer">
-                       <strong> Be careful</strong> , <cite>wear your mask , clean your hands, keep a safe distance.</cite>
+                        <br/>
+                        <footer className="blockquote-footer" style={{color:'#566d69'}}>
+                        <FontAwesomeIcon icon={faExclamationTriangle} fixedWidth /><strong> Be careful</strong> , <cite>wear your mask , clean your hands, keep a safe distance.</cite>
                         </footer>
                     </blockquote>
                 </Card.Body>
             </Card>
     
-
+            </div>
         </>)
     }
 
