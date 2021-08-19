@@ -2,7 +2,7 @@ import { Component } from "react";
 import { Button, Card,Row,Col } from "react-bootstrap";
 import { withAuth0 } from "@auth0/auth0-react";
 import { Form, FloatingLabel } from "react-bootstrap";
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 import './Styles/post.css';
 import Comment from "./Comment";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -53,7 +53,7 @@ class Post extends Component{
                             </Col>
                         </Row>
                        
-                        <Card.Footer>
+                        <Card.Body>
                             {user.email === this.props.item.userEmail
                             && <Card.Body>
                                 <Button variant="danger" style={{marginRight:'1%'}} onClick={() => this.props.deletePost(this.props.item._id)}
@@ -61,6 +61,8 @@ class Post extends Component{
                                 <Button variant="success" onClick={() => this.props.updatePost(this.props.item._id, this.props.idx)}
                                 ><FontAwesomeIcon icon={faEdit} fixedWidth /></Button>
                             </Card.Body>}
+                        </Card.Body>
+                        <Card.Body>
                             <Card.Body>
                                 <Form onSubmit={(event) => this.commentHandler(event, this.props.item._id)}>
                                     <FloatingLabel controlId="floatingTextarea2" label="Comments">
@@ -91,7 +93,7 @@ class Post extends Component{
                                                 />
                                     })}
                                </Card.Body>}
-                        </Card.Footer>
+                        </Card.Body>
                     </Card.Body>
                 </Card>
             </>

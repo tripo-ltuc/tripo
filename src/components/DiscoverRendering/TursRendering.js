@@ -54,7 +54,7 @@ class TursRendering extends React.Component {
                                             <strong>Rating : {item.rating}</strong>
                                             <br />
                                             <strong>Price : {item.price}</strong><br/>
-                                            <Button variant="warning" style={{ width: "100%", height: "10%", }} taget='_blank' onClick={() => { this.tureModalFun(idx) }}>More...</Button>
+                                            <Button variant="warning" style={{ width: "100%", height: "10%", }} target='_blank' onClick={() => { this.tureModalFun(idx) }}>More...</Button>
                                         </div>
 
                                     </div>
